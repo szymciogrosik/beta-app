@@ -1,0 +1,19 @@
+button:focus {
+  outline: none;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 600px) {
+  .full-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) {
+  .short-menu {
+    display: none;
+  }
+}
