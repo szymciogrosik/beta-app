@@ -1,4 +1,4 @@
-name: Build and test
+name: Build for prod and commit
 
 on:
   push:
@@ -20,14 +20,6 @@ jobs:
 
       - name: Build with prod settings
         run: npm run build-prod
-
-#      - name: Commit docs
-#        run: |
-#          git config --global user.email "szyg@netcompany.com"
-#          git config --global user.name "nc-szyg"
-#          git add docs
-#          git commit -m 'CI - prod deploy'
-#          git push
 
       - name: Commit prod artifacts
         uses: EndBug/add-and-commit@v9
