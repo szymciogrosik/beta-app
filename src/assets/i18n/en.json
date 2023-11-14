@@ -2,7 +2,7 @@
   "language.english": "English",
   "language.polish": "Polish",
   "language.german": "German",
-  "comp.login.header": "Provide data to login:",
+  "comp.login.header": "Provide data to login",
   "comp.login.email": "Email",
   "comp.login.password": "Password",
   "comp.login.approve.button": "Login",

@@ -34,3 +34,16 @@ $color-background: #FAFAFA;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card-title {
+  text-align: center;
+  padding: 0 0 20px 0;
+}
+
+mat-card {
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}

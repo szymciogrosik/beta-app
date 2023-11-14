@@ -1,4 +1,4 @@
-<div class="alert alert-info">
+<div class="alert alert-info" style="margin-top: 20px;">
  Email: admin@gmail.com<br />
  Email: fromtheashestothesky@gmail.com<br />
  Password: admin
@@ -29,9 +29,9 @@
                 </mat-form-field>
             </p>
 
-            <p *ngIf="serverError" class="error">
+            <div *ngIf="serverError" class="alert alert-danger" role="alert" style="margin-bottom: 30px;">
                 {{ serverError }}
-            </p>
+            </div>
 
             <div class="form-group">
                 <button [disabled]="loading"  mat-flat-button type="submit" color="primary">{{ 'comp.login.approve.button' | translate }}</button>
