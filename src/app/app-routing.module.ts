@@ -8,11 +8,16 @@ import {AdminGuard} from './_guards/admin.guard';
 import {DetailsComponent} from './user/details/details.component';
 import {UserComponent} from './user/user.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
+import {TemplateComponent} from './template/template.component';
 
 const appRoutes: Routes = [
   {
     path: RedirectionEnum.HOME,
     component: HomeComponent
+  },
+  {
+    path: RedirectionEnum.TEMPLATES,
+    component: TemplateComponent
   },
   {
     path: RedirectionEnum.LOGIN,

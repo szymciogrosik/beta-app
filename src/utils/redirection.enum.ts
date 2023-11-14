@@ -6,4 +6,5 @@ export enum RedirectionEnum {
   USER = 'user',
   USER_DETAILS = 'details',
   USER_CHANGE_PASSWORD = 'change_password',
+  TEMPLATES = 'templates',
 }

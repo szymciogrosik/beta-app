@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
+  hidePassword = true;
   returnUrl = '';
 
   constructor(
@@ -26,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
 
     // reset login status
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.serverError = '';
     this.submitted = true;
 
     // stop here if form is invalid
@@ -59,8 +61,19 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]).then();
         },
         error => {
+          this.serverError = error;
           this.snackbarService.openDefaultSnackBar(error);
           this.loading = false;
         });
+  }
+
+  @Input() serverError: string | null;
+
+  getEmailErrorMessage(): string {
+    if (this.formControls['email'].hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.formControls['email'].hasError('email') ? 'Not a valid email' : '';
   }
 }

@@ -30,6 +30,8 @@ import {HttpJwtInterceptor} from './_helpers/http.jwt.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TemplateComponent} from './template/template.component';
+import { FormFieldComponent } from './template/form-field/form-field.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     ChangePasswordComponent,
     DetailsComponent,
     UserComponent,
+    TemplateComponent,
+    FormFieldComponent,
   ],
   imports: [
     BrowserModule,

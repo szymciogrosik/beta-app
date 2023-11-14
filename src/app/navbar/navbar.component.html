@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="navbar-shadow">
 
   <button mat-button routerLink="{{ rp.SEP + rp.HOME }}"><mat-icon>home</mat-icon> Angular starter</button>
 
@@ -7,14 +7,20 @@
 
   <!-- Full menu navbar -->
   <div class="full-menu">
+    <!-- Home tab -->
     <button mat-button routerLink="{{ rp.SEP + rp.HOME }}">{{ 'navbar.tab.home' | translate }}</button>
+    <button mat-button routerLink="{{ rp.SEP + rp.TEMPLATES }}">{{ 'navbar.tab.templates' | translate }}</button>
+    <!-- User menu tab -->
     <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.isLoggedIn()">
       {{ this.userService.currentUser!.firstName }}
     </button>
+    <!-- Logout tab -->
     <button mat-button (click)="logout()" *ngIf="userService.isLoggedIn()">{{ 'navbar.tab.logout' | translate }}</button>
+    <!-- Login tab -->
     <button mat-button routerLink="{{ rp.SEP + rp.LOGIN }}" *ngIf="!userService.isLoggedIn()">
       {{ 'navbar.tab.signIn' | translate }}
     </button>
+    <!-- Choose language tab -->
     <button mat-button [matMenuTriggerFor]="languageMenu"><mat-icon>language</mat-icon></button>
   </div>
 
@@ -26,27 +32,39 @@
 </mat-toolbar>
 
 <mat-menu xPosition="before" #menu="matMenu">
+  <!-- Home tab -->
   <button mat-menu-item routerLink="{{ rp.SEP + rp.HOME }}">{{ 'navbar.tab.home' | translate }}</button>
+  <!-- User menu tab -->
   <button mat-menu-item [matMenuTriggerFor]="userMenu" *ngIf="userService.isLoggedIn()">
     {{ this.userService.currentUser!.firstName }}
   </button>
+  <!-- Logout tab -->
   <button mat-menu-item (click)="logout()" *ngIf="userService.isLoggedIn()">{{ 'navbar.tab.logout' | translate }}</button>
-  <button mat-menu-item routerLink="{{ rp.SEP + rp.LOGIN }}" *ngIf="!userService.isLoggedIn()">{{ 'navbar.tab.signIn' | translate }}</button>
+  <!-- Login tab -->
+  <button mat-menu-item routerLink="{{ rp.SEP + rp.LOGIN }}" *ngIf="!userService.isLoggedIn()">
+    {{ 'navbar.tab.signIn' | translate }}
+  </button>
+  <!-- Choose language tab -->
   <button mat-menu-item [matMenuTriggerFor]="languageMenu"><mat-icon>language</mat-icon></button>
 </mat-menu>
 
+
+<!-- User sub-menu -->
 <mat-menu xPosition="before" #userMenu="matMenu">
+  <!-- User details -->
   <button mat-menu-item routerLink="{{ rp.SEP + rp.USER + rp.SEP + rp.USER_DETAILS }}">
     {{ 'navbar.tab.loggedUser.details' | translate }}
   </button>
+  <!-- Change password -->
   <button mat-menu-item routerLink="{{ rp.SEP + rp.USER + rp.SEP + rp.USER_CHANGE_PASSWORD }}">
     {{ 'navbar.tab.loggedUser.changePassword' | translate }}
   </button>
+  <!-- See details -->
   <button mat-menu-item *ngIf="this.userService.hasRoleAdmin()">{{ 'navbar.tab.loggedUser.seeAllUsers' | translate }}</button>
 </mat-menu>
 
+<!-- Language sub-menu -->
 <mat-menu xPosition="before" #languageMenu="matMenu">
   <button mat-menu-item (click)="this.translateService.setLanguage('pl')">{{ 'language.polish' | translate }}</button>
   <button mat-menu-item (click)="this.translateService.setLanguage('en')">{{ 'language.english' | translate }}</button>
-  <button mat-menu-item (click)="this.translateService.setLanguage('de')">{{ 'language.german' | translate }}</button>
 </mat-menu>
