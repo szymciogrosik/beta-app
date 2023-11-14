@@ -56,15 +56,14 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(JSON.stringify(this.loginForm.value))
       .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]).then();
-        },
-        error => {
+      .subscribe({
+        next: (data) => { this.router.navigate([this.returnUrl]).then() },
+        error: (error) => {
           this.serverError = error;
           this.snackbarService.openDefaultSnackBar(error);
           this.loading = false;
-        });
+        }
+      });
   }
 
   @Input() serverError: string | null;
