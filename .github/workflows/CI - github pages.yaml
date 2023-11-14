@@ -24,7 +24,7 @@ jobs:
       - name: Copy custom 404 page for GitHub pages
         run: |
           echo ls
-          cp /beta-app/src/404.html /beta-app/docs/404.html
+          cp ${GITHUB_WORKSPACE}/beta-app/src/404.html ${GITHUB_WORKSPACE}/beta-app/docs/404.html
 
       - name: Commit prod artifacts
         uses: EndBug/add-and-commit@v9
