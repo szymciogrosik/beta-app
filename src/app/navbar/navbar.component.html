@@ -9,6 +9,7 @@
   <div class="full-menu">
     <!-- Home tab -->
     <button mat-button routerLink="{{ rp.SEP + rp.HOME }}">{{ 'navbar.tab.home' | translate }}</button>
+    <button mat-button routerLink="{{ rp.SEP + rp.TEMPLATES }}">{{ 'navbar.tab.templates' | translate }}</button>
     <!-- User menu tab -->
     <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.isLoggedIn()">
       {{ this.userService.currentUser!.firstName }}
@@ -66,5 +67,4 @@
 <mat-menu xPosition="before" #languageMenu="matMenu">
   <button mat-menu-item (click)="this.translateService.setLanguage('pl')">{{ 'language.polish' | translate }}</button>
   <button mat-menu-item (click)="this.translateService.setLanguage('en')">{{ 'language.english' | translate }}</button>
-  <button mat-menu-item (click)="this.translateService.setLanguage('de')">{{ 'language.german' | translate }}</button>
 </mat-menu>

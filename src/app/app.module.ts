@@ -30,6 +30,7 @@ import {HttpJwtInterceptor} from './_helpers/http.jwt.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TemplateComponent } from './template/template.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     ChangePasswordComponent,
     DetailsComponent,
     UserComponent,
+    TemplateComponent,
   ],
   imports: [
     BrowserModule,
