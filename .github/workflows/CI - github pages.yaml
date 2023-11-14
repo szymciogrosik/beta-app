@@ -21,6 +21,9 @@ jobs:
       - name: Build with prod settings
         run: npm run build-prod
 
+      - name: Copy custom 404 page for GitHub pages
+        run: cp /src/404.html /docs/404.html
+
       - name: Commit prod artifacts
         uses: EndBug/add-and-commit@v9
         with:
