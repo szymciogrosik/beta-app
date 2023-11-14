@@ -1,0 +1,18 @@
+{
+  "language.english": "English",
+  "language.polish": "Polish",
+  "language.german": "German",
+  "comp.login.header": "Provide data to login",
+  "comp.login.email": "Email",
+  "comp.login.password": "Password",
+  "comp.login.approve.button": "Login",
+  "comp.login.error.emailRequired": "Email is required",
+  "comp.login.error.passwordRequired": "Password is required",
+  "navbar.tab.home": "Home",
+  "navbar.tab.templates": "Templates",
+  "navbar.tab.signIn": "Sign in",
+  "navbar.tab.logout": "Logout",
+  "navbar.tab.loggedUser.details": "User details",
+  "navbar.tab.loggedUser.changePassword": "Change password",
+  "navbar.tab.loggedUser.seeAllUsers": "See all users"
+}
