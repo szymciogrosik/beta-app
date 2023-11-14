@@ -2,27 +2,37 @@ name: Build and test
 
 on:
   push:
-    branches: [main]
+    branches: [gh-pages]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Build
-        run: |
-          npm install
-          npm run build-prod
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
 
-      - name: Commit
-        run: |
-          git add docs
-          git commit -m 'CI - prod deploy'
-          git push
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with prod settings
+        run: npm run build-prod
+
+#      - name: Commit docs
+#        run: |
+#          git config --global user.email "szyg@netcompany.com"
+#          git config --global user.name "nc-szyg"
+#          git add docs
+#          git commit -m 'CI - prod deploy'
+#          git push
+
+      - name: Commit prod artifacts
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Szymon Gross
+          author_email: szyg@netcompany.com
+          message: 'Added built artifacts for GitHub pages'
+          add: 'docs --force'
