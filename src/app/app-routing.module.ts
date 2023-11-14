@@ -9,6 +9,7 @@ import {DetailsComponent} from './user/details/details.component';
 import {UserComponent} from './user/user.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {TemplateComponent} from './template/template.component';
+import { ConnectionComponent } from './connection/connection.component';
 
 const appRoutes: Routes = [
   {
@@ -37,6 +38,10 @@ const appRoutes: Routes = [
       { path: RedirectionEnum.USER_DETAILS, component: DetailsComponent },
       { path: RedirectionEnum.USER_CHANGE_PASSWORD, component: ChangePasswordComponent }
     ]
+  },
+  {
+    path: RedirectionEnum.CONNECTION,
+    component: ConnectionComponent
   },
 
   // otherwise redirect to home
