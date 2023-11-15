@@ -13,8 +13,6 @@ export class BiblePerDayService {
   }
 
   public findQuotesForToday(): Observable<any> {
-    console.log("Prod: " + environment.PRODUCTION);
-    console.log(environment.BIBLE_PER_DAY_API_KEY);
     return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.BIBLE_PER_DAY_API_KEY}));
   }
 
