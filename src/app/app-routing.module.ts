@@ -1,14 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {AdminComponent} from './admin/admin.component';
-import {UserGuard} from './_guards/user.guard';
-import {LoginComponent} from './login/login.component';
-import {RedirectionEnum} from '../utils/redirection.enum';
-import {AdminGuard} from './_guards/admin.guard';
-import {DetailsComponent} from './user/details/details.component';
-import {UserComponent} from './user/user.component';
-import {ChangePasswordComponent} from './user/change-password/change-password.component';
-import {TemplateComponent} from './template/template.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserGuard } from './_guards/user.guard';
+import { LoginComponent } from './login/login.component';
+import { RedirectionEnum } from '../utils/redirection.enum';
+import { AdminGuard } from './_guards/admin.guard';
+import { DetailsComponent } from './user/details/details.component';
+import { UserComponent } from './user/user.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { TemplateComponent } from './template/template.component';
 import { ConnectionComponent } from './connection/connection.component';
 
 const appRoutes: Routes = [
