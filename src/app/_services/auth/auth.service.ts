@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { User } from '../../_models/user';
 import { RedirectionEnum } from '../../../utils/redirection.enum';
-import { SnackbarService } from '../snackbar.service';
+import { SnackbarService } from '../util/snackbar.service';
 import { Router } from '@angular/router';
 import { AuthPath } from './auth-ep.enum';
 

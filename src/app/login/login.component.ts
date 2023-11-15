@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../_services/auth/auth.service';
-import { SnackbarService } from '../_services/snackbar.service';
+import { SnackbarService } from '../_services/util/snackbar.service';
 
 @Component({
   selector: 'app-login',

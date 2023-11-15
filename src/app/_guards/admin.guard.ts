@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UserService } from '../_services/user.service';
-import { SnackbarService } from '../_services/snackbar.service';
+import { UserService } from '../_services/user/user.service';
+import { SnackbarService } from '../_services/util/snackbar.service';
 import { ErrorUtils } from '../../utils/error.utils';
 
 @Injectable({
