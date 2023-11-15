@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
-import {AuthService} from '../_services/auth/auth.service';
-import {SnackbarService} from '../_services/snackbar.service';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthService } from '../_services/auth/auth.service';
+import { SnackbarService } from '../_services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -75,4 +75,5 @@ export class LoginComponent implements OnInit {
 
     return this.formControls['email'].hasError('email') ? 'Not a valid email' : '';
   }
+
 }

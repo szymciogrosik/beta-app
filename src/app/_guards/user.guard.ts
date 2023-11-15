@@ -1,9 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import {UserService} from '../_services/user.service';
-import {SnackbarService} from '../_services/snackbar.service';
-import {ErrorUtils} from '../../utils/error.utils';
-import {RedirectionEnum} from '../../utils/redirection.enum';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { UserService } from '../_services/user.service';
+import { SnackbarService } from '../_services/snackbar.service';
+import { ErrorUtils } from '../../utils/error.utils';
 
 @Injectable({ providedIn: 'root' })
 export class UserGuard implements CanActivate {
@@ -21,4 +20,5 @@ export class UserGuard implements CanActivate {
     this.snackbarService.openDefaultSnackBar(ErrorUtils.getMessage(ErrorUtils.NOT_ENOUGH_RIGHTS));
     return false;
   }
+
 }

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import {SnackbarService} from '../_services/snackbar.service';
-import {ErrorUtils} from '../../utils/error.utils';
-import {AuthService} from '../_services/auth/auth.service';
+import { SnackbarService } from '../_services/snackbar.service';
+import { ErrorUtils } from '../../utils/error.utils';
+import { AuthService } from '../_services/auth/auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -27,4 +27,5 @@ export class ErrorInterceptor implements HttpInterceptor {
           return throwError(error);
       }));
   }
+
 }

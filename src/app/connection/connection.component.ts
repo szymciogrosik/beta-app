@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ConnectionService } from '../_services/connection.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-connection',
