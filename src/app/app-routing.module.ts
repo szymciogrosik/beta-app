@@ -8,7 +8,7 @@ import { AdminGuard } from './_guards/admin.guard';
 import { DetailsComponent } from './user/details/details.component';
 import { UserComponent } from './user/user.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
-import { BibleComponent } from './bibles/bible.component';
+import { BibleComponent } from './bible/bible.component';
 import { ConnectionComponent } from './connection/connection.component';
 
 const appRoutes: Routes = [
