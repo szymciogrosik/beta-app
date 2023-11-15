@@ -9,7 +9,7 @@
   "comp.login.error.emailRequired": "Email is required",
   "comp.login.error.passwordRequired": "Password is required",
   "navbar.tab.home": "Home",
-  "navbar.tab.templates": "Templates",
+  "navbar.tab.bible": "Bible",
   "navbar.tab.signIn": "Sign in",
   "navbar.tab.logout": "Logout",
   "navbar.tab.loggedUser.details": "User details",
