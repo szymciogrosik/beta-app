@@ -30,7 +30,6 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TemplateComponent } from './template/template.component';
-import { FormFieldComponent } from './template/form-field/form-field.component';
 import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
@@ -44,7 +43,6 @@ import { ConnectionComponent } from './connection/connection.component';
     DetailsComponent,
     UserComponent,
     TemplateComponent,
-    FormFieldComponent,
     ConnectionComponent,
   ],
   imports: [
