@@ -9,7 +9,7 @@
   "comp.login.error.emailRequired": "Email jest wymagany",
   "comp.login.error.passwordRequired": "Hasło jest wymagane",
   "navbar.tab.home": "Strona startowa",
-  "navbar.tab.templates": "Szablony",
+  "navbar.tab.bible": "Biblia",
   "navbar.tab.signIn": "Zaloguj",
   "navbar.tab.logout": "Wyloguj",
   "navbar.tab.loggedUser.details": "Mój profil",

@@ -29,7 +29,7 @@ import { HttpJwtInterceptor } from './_helpers/http.jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TemplateComponent } from './template/template.component';
+import { BibleComponent } from './bibles/bible.component';
 import { ConnectionComponent } from './connection/connection.component';
 
 @NgModule({
@@ -42,7 +42,7 @@ import { ConnectionComponent } from './connection/connection.component';
     ChangePasswordComponent,
     DetailsComponent,
     UserComponent,
-    TemplateComponent,
+    BibleComponent,
     ConnectionComponent,
   ],
   imports: [
