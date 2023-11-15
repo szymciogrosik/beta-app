@@ -10,7 +10,7 @@ export class ConnectionService {
 
   private backendAliveSubject: BehaviorSubject<boolean | null>;
   public backendAlive: Observable<boolean | null>;
-  
+
   constructor(private http: HttpClient) {
     this.backendAliveSubject = new BehaviorSubject<boolean | null>(false);
     this.backendAlive = this.backendAliveSubject.asObservable();
@@ -22,4 +22,5 @@ export class ConnectionService {
       error: (error) => this.backendAliveSubject.next(false)
     });
   }
+
 }

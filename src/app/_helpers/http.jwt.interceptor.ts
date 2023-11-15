@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {AuthService} from '../_services/auth/auth.service';
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from '../_services/auth/auth.service';
 
 @Injectable()
 export class HttpJwtInterceptor implements HttpInterceptor {
@@ -27,4 +27,5 @@ export class HttpJwtInterceptor implements HttpInterceptor {
       });
       return next.handle(request);
   }
+
 }

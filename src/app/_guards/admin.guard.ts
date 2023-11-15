@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import {UserService} from '../_services/user.service';
-import {SnackbarService} from '../_services/snackbar.service';
-import {ErrorUtils} from '../../utils/error.utils';
-import {RedirectionEnum} from '../../utils/redirection.enum';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { UserService } from '../_services/user/user.service';
+import { SnackbarService } from '../_services/util/snackbar.service';
+import { ErrorUtils } from '../../utils/error.utils';
 
 @Injectable({
   providedIn: 'root'

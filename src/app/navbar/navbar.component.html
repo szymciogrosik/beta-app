@@ -7,9 +7,11 @@
 
   <!-- Full menu navbar -->
   <div class="full-menu">
+    <!-- Add new link here part 1/2 -->
     <!-- Home tab -->
     <button mat-button routerLink="{{ rp.SEP + rp.HOME }}">{{ 'navbar.tab.home' | translate }}</button>
-    <button mat-button routerLink="{{ rp.SEP + rp.TEMPLATES }}">{{ 'navbar.tab.templates' | translate }}</button>
+    <!-- Bible tab -->
+    <button mat-button routerLink="{{ rp.SEP + rp.BIBLE }}">{{ 'navbar.tab.bible' | translate }}</button>
     <!-- User menu tab -->
     <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.isLoggedIn()">
       {{ this.userService.currentUser!.firstName }}
@@ -32,8 +34,11 @@
 </mat-toolbar>
 
 <mat-menu xPosition="before" #menu="matMenu">
+  <!-- Add new link here part 2/2 -->
   <!-- Home tab -->
   <button mat-menu-item routerLink="{{ rp.SEP + rp.HOME }}">{{ 'navbar.tab.home' | translate }}</button>
+  <!-- Bible tab -->
+  <button mat-menu-item routerLink="{{ rp.SEP + rp.BIBLE }}">{{ 'navbar.tab.bible' | translate }}</button>
   <!-- User menu tab -->
   <button mat-menu-item [matMenuTriggerFor]="userMenu" *ngIf="userService.isLoggedIn()">
     {{ this.userService.currentUser!.firstName }}
