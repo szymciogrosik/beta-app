@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ConnectionService } from '../_services/connection/connection.service';
+import {Component} from '@angular/core';
+import {ConnectionService} from '../_services/connection/connection.service';
 
 @Component({
   selector: 'app-connection',

@@ -1,25 +1,30 @@
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Injectable} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {CustomTranslateService} from "../translate/custom-translate.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SnackbarService {
 
-  static SHORT_DURATION = 5000;
-  static MEDIUM_DURATION = 7500;
-  static LONG_DURATION = 10000;
+  static SHORT_DURATION: number = 5000;
+  static MEDIUM_DURATION: number = 7500;
+  static LONG_DURATION: number = 10000;
 
-  static DISMISS_ACTION = 'Dismiss';
+  static DISMISS_ACTION: string = "snackbar.default.dismiss";
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private translateService: CustomTranslateService
+  ) {
+  }
 
   public openCustomSnackBar(message: string, action: string, duration: number): void {
-    this.snackBar.open(message, action, { duration });
+    this.snackBar.open(message, action, {duration});
   }
 
   public openDefaultSnackBar(message: string): void {
-    this.snackBar.open(message, SnackbarService.DISMISS_ACTION, {
+    this.snackBar.open(message, this.translateService.get(SnackbarService.DISMISS_ACTION), {
       duration: SnackbarService.MEDIUM_DURATION
     });
   }

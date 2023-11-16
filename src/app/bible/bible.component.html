@@ -1,9 +1,13 @@
 <mat-card>
   <mat-card-title>
-    <h2>Fragment z na dziś</h2>
+    <h2>{{ 'bible.cardHeader' | translate }}</h2>
   </mat-card-title>
   <mat-card-content>
-    {{ bibleQuote }}
+    <div *ngIf="bibleQuote" [innerHTML]="bibleQuote" style="text-align: center;">
+    </div>
+    <div *ngIf="!bibleQuote">
+      <mat-spinner [diameter]="80"></mat-spinner>
+    </div>
   </mat-card-content>
 </mat-card>
 

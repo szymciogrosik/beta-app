@@ -6,9 +6,9 @@ export class ErrorUtils {
 
   // Error messages
   private static messages: Map<string, string> = new Map([
-    [ ErrorUtils.UNHANDLED_ERROR, 'Unrecognized error' ],
-    [ ErrorUtils.HTTP_UNAUTHORIZED, 'Authorization failed' ],
-    [ ErrorUtils.NOT_ENOUGH_RIGHTS, 'You don\'t have enough rights to see this page' ]
+    [ErrorUtils.UNHANDLED_ERROR, 'Unrecognized error'],
+    [ErrorUtils.HTTP_UNAUTHORIZED, 'Authorization failed'],
+    [ErrorUtils.NOT_ENOUGH_RIGHTS, 'You don\'t have enough rights to see this page']
   ]);
 
   public static getMessage(errorCode: string): string {

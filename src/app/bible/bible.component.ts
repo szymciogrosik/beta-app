@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {BibleService} from "../_services/bible/bible.service";
 import {BiblePerDayService} from "../_services/bible/bible-per-day.service";
 import {BibleReference} from "../_services/bible/bible-reference";
@@ -23,9 +23,9 @@ export class BibleComponent {
         this.bibleService.findQuoteForWarsawBible(bibleReference).subscribe({
           next: (data): void => {
             for (let i: number = 0; i < data.verses.length; i++) {
-              this.bibleQuote += (data.verses[i].text + "\n");
+              this.bibleQuote += (data.verses[i].text + "<br>");
             }
-            this.bibleQuote += ("\n" + bibleReference.present());
+            this.bibleQuote += ("<br><i>" + bibleReference.present() + "</i>");
           },
           error: (error) => console.error(error)
         });

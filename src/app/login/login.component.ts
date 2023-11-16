@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { AuthService } from '../_services/auth/auth.service';
-import { SnackbarService } from '../_services/util/snackbar.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {AuthService} from '../_services/auth/auth.service';
+import {SnackbarService} from '../_services/util/snackbar.service';
+import {CustomTranslateService} from "../_services/translate/custom-translate.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -12,18 +14,20 @@ import { SnackbarService } from '../_services/util/snackbar.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  hidePassword = true;
-  returnUrl = '';
+  loading: boolean = false;
+  submitted: boolean = false;
+  hidePassword: boolean = true;
+  returnUrl: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private snackbarService: SnackbarService
-  ) { }
+    private snackbarService: SnackbarService,
+    private translateService: CustomTranslateService
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -57,7 +61,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(JSON.stringify(this.loginForm.value))
       .pipe(first())
       .subscribe({
-        next: (data) => { this.router.navigate([this.returnUrl]).then() },
+        next: (data) => {
+          this.router.navigate([this.returnUrl]).then()
+        },
         error: (error) => {
           this.serverError = error;
           this.snackbarService.openDefaultSnackBar(error);
@@ -70,10 +76,12 @@ export class LoginComponent implements OnInit {
 
   getEmailErrorMessage(): string {
     if (this.formControls['email'].hasError('required')) {
-      return 'You must enter a value';
+      return this.translateService.get('login.validation.mandatoryPassword');
     }
 
-    return this.formControls['email'].hasError('email') ? 'Not a valid email' : '';
+    return this.formControls['email'].hasError('email')
+      ? this.translateService.get('login.validation.invalidEmail')
+      : '';
   }
 
 }

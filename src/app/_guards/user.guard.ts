@@ -1,16 +1,17 @@
-﻿import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UserService } from '../_services/user/user.service';
-import { SnackbarService } from '../_services/util/snackbar.service';
-import { ErrorUtils } from '../../utils/error.utils';
+﻿import {Injectable} from '@angular/core';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {UserService} from '../_services/user/user.service';
+import {SnackbarService} from '../_services/util/snackbar.service';
+import {ErrorUtils} from '../../utils/error.utils';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserGuard implements CanActivate {
 
   constructor(
     private userService: UserService,
     private snackbarService: SnackbarService
-  ) { }
+  ) {
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.userService.hasRoleUser()) {

@@ -15,12 +15,12 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 $dark-theme: mat.define-dark-theme((
-    color: (primary: mat.define-palette(mat.$pink-palette), accent: mat.define-palette(mat.$blue-grey-palette)),
+    color: (primary: mat.define-palette(mat.$pink-palette), accent: mat.define-palette(mat.$blue-grey-palette), warn: mat.define-palette(mat.$yellow-palette)),
     density: -2,
     typography: mat.define-typography-config()
 ));
 $light-theme: mat.define-light-theme((
-    color: (primary: mat.define-palette(mat.$blue-palette), accent: mat.define-palette(mat.$blue-grey-palette))
+    color: (primary: mat.define-palette(mat.$blue-palette), accent: mat.define-palette(mat.$blue-grey-palette), warn: mat.define-palette(mat.$yellow-palette))
 ));
 
 $color-background: #FAFAFA;
@@ -45,4 +45,7 @@ mat-card {
 }
 mat-form-field {
   width: 100%;
+}
+mat-spinner {
+  margin: 0 auto;
 }
