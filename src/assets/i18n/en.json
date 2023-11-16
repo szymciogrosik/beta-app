@@ -6,6 +6,8 @@
   "login.enterEmail": "Enter your email",
   "login.exampleEmail": "pat@example.com",
   "login.enterPassword": "Enter your password",
+  "login.validation.mandatoryPassword": "Password is mandatory",
+  "login.validation.invalidEmail": "Invalid email",
   "login.approve.button": "Login",
   "navbar.tab.home": "Home",
   "navbar.tab.bible": "Bible",

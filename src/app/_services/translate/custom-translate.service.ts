@@ -27,8 +27,8 @@ export class CustomTranslateService {
     localStorage.setItem(environment.SELECTED_LANGUAGE_KEY, language);
   }
 
-  get(key: string | Array<string>): Observable<string | any> {
-    return this.translateService.get(key);
+  get(key: string): Observable<string> {
+    return this.translateService.instant(key);
   }
 
 }

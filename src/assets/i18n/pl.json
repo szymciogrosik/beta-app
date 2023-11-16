@@ -6,6 +6,8 @@
   "login.enterEmail": "Wprowadź email",
   "login.exampleEmail": "adam@gmail.com",
   "login.enterPassword": "Wprowadź hasło",
+  "login.validation.mandatoryPassword": "Hasło jest obowiązkowe",
+  "login.validation.invalidEmail": "Email jest niepoprawny",
   "login.approve.button": "Zaloguj",
   "navbar.tab.home": "Strona startowa",
   "navbar.tab.bible": "Biblia",
