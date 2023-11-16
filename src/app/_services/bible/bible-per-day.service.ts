@@ -21,12 +21,6 @@ export class BiblePerDayService {
     for (const match of matches) {
       let startVerse: number = Number(match[3]);
       let endVerse: number = Number(match[5]) === undefined ? Number(match[5]) : startVerse;
-      // let verseArray: number[] = [];
-      // let iterator: number = 0;
-      // for (let i: number = startVerse; i <= endVerse; i++) {
-      //   verseArray[iterator] = i;
-      //   iterator++;
-      // }
       return new BibleReference(match[1], Number(match[2]), startVerse, endVerse);
     }
     return new BibleReference("", 0, 0, 0);
