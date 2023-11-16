@@ -13,7 +13,7 @@ export class CustomTranslateService {
   ) {
   }
 
-  setLoadedOrDefaultLanguage(): void {
+  public setLoadedOrDefaultLanguage(): void {
     const savedLanguage = localStorage.getItem(environment.SELECTED_LANGUAGE_KEY);
     const language = savedLanguage !== null && savedLanguage !== 'null' ? savedLanguage : environment.DEFAULT_LANGUAGE;
 
@@ -22,12 +22,12 @@ export class CustomTranslateService {
     localStorage.setItem(environment.SELECTED_LANGUAGE_KEY, language);
   }
 
-  setLanguage(language: string): void {
+  public setLanguage(language: string): void {
     this.translateService.use(language);
     localStorage.setItem(environment.SELECTED_LANGUAGE_KEY, language);
   }
 
-  get(key: string): Observable<string> {
+  public get(key: string): string {
     return this.translateService.instant(key);
   }
 

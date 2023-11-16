@@ -8,6 +8,7 @@
   "navbar.tab.loggedUser.details": "Mój profil",
   "navbar.tab.loggedUser.changePassword": "Zmień hasło",
   "navbar.tab.loggedUser.seeAllUsers": "Wszyscy użytkownicy",
+  "snackbar.default.dismiss": "Dismiss",
   "login.header": "Wprowadź dane",
   "login.enterEmail": "Wprowadź email",
   "login.exampleEmail": "adam@gmail.com",

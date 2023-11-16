@@ -74,14 +74,14 @@ export class LoginComponent implements OnInit {
 
   @Input() serverError: string | null;
 
-  getEmailErrorMessage(): Observable<string> {
+  getEmailErrorMessage(): string {
     if (this.formControls['email'].hasError('required')) {
       return this.translateService.get('login.validation.mandatoryPassword');
     }
 
     return this.formControls['email'].hasError('email')
       ? this.translateService.get('login.validation.invalidEmail')
-      : new Observable<string>();
+      : '';
   }
 
 }

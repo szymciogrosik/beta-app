@@ -8,6 +8,7 @@
   "navbar.tab.loggedUser.details": "User details",
   "navbar.tab.loggedUser.changePassword": "Change password",
   "navbar.tab.loggedUser.seeAllUsers": "See all users",
+  "snackbar.default.dismiss": "Zamknij",
   "login.header": "Provide data to login",
   "login.enterEmail": "Enter your email",
   "login.exampleEmail": "pat@example.com",
