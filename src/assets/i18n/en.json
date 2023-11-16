@@ -1,7 +1,13 @@
 {
   "language.english": "English",
-  "language.polish": "Polish",
-  "language.german": "German",
+  "language.polish": "Polski",
+  "navbar.tab.home": "Home",
+  "navbar.tab.bible": "Bible",
+  "navbar.tab.signIn": "Sign in",
+  "navbar.tab.logout": "Logout",
+  "navbar.tab.loggedUser.details": "User details",
+  "navbar.tab.loggedUser.changePassword": "Change password",
+  "navbar.tab.loggedUser.seeAllUsers": "See all users",
   "login.header": "Provide data to login",
   "login.enterEmail": "Enter your email",
   "login.exampleEmail": "pat@example.com",
@@ -9,11 +15,5 @@
   "login.validation.mandatoryPassword": "Password is mandatory",
   "login.validation.invalidEmail": "Invalid email",
   "login.approve.button": "Login",
-  "navbar.tab.home": "Home",
-  "navbar.tab.bible": "Bible",
-  "navbar.tab.signIn": "Sign in",
-  "navbar.tab.logout": "Logout",
-  "navbar.tab.loggedUser.details": "User details",
-  "navbar.tab.loggedUser.changePassword": "Change password",
-  "navbar.tab.loggedUser.seeAllUsers": "See all users"
+  "bible.cardHeader": "Quote for today"
 }
