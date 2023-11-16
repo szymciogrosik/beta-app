@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {BibleService} from "../_services/bible/bible.service";
 import {BiblePerDayService} from "../_services/bible/bible-per-day.service";
 import {BibleReference} from "../_services/bible/bible-reference";

@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { AuthService } from '../_services/auth/auth.service';
-import { SnackbarService } from '../_services/util/snackbar.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {AuthService} from '../_services/auth/auth.service';
+import {SnackbarService} from '../_services/util/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private snackbarService: SnackbarService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -57,7 +58,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(JSON.stringify(this.loginForm.value))
       .pipe(first())
       .subscribe({
-        next: (data) => { this.router.navigate([this.returnUrl]).then() },
+        next: (data) => {
+          this.router.navigate([this.returnUrl]).then()
+        },
         error: (error) => {
           this.serverError = error;
           this.snackbarService.openDefaultSnackBar(error);

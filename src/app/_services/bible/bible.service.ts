@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BibleReference} from "./bible-reference";
-import {TranslateBibleShortcuts} from "./translate-bible-shortcuts";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BibleService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public findQuoteForWarsawBible(bibleReference: BibleReference): Observable<any> {
     return this.findQuote(bibleReference.bibleBook.bibleApi, bibleReference.chapter, bibleReference.verseStart, bibleReference.verseEnd);
