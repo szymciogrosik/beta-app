@@ -17,13 +17,16 @@ export class BiblePerDayService {
   }
 
   public parseResponse(bibleReference: string): BibleReference {
-    let matches = bibleReference.matchAll(/([0-9]*\s*[A-Za-z]+) ([0-9]+),([0-9]+)(-)*([0-9]+)*/g);
+    let matches: IterableIterator<RegExpMatchArray> =
+      bibleReference.matchAll(/([0-9 ]*[\p{Letter}\p{Mark}]+) ([0-9]+),([0-9]+)(-)*([0-9]+)*/gu);
     for (const match of matches) {
+      let warsawBibleBookShortcut: string = match[1];
+      let chapter: number = Number(match[2]);
       let startVerse: number = Number(match[3]);
       let endVerse: number = Number(match[5]) === undefined ? Number(match[5]) : startVerse;
-      return new BibleReference(match[1], Number(match[2]), startVerse, endVerse);
+      return new BibleReference(warsawBibleBookShortcut, chapter, startVerse, endVerse);
     }
-    return new BibleReference("", 0, 0, 0);
+    throw new Error("Bible reference '" + bibleReference + "' does not match to Regular Expression.")
   }
 
 }
