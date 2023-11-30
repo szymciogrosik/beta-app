@@ -19,13 +19,13 @@ export class BibleComponent {
     this.biblePerDayService.findQuotesForToday().subscribe({
       next: (data): void => {
         let bibleReferenceString: string = data.first_s;
-        let bibleReference: BibleReference = this.biblePerDayService.parseResponse(bibleReferenceString);
-        this.bibleService.findQuoteForWarsawBible(bibleReference).subscribe({
+        let bibleReference: BibleReference[] = this.biblePerDayService.parseResponse(bibleReferenceString);
+        this.bibleService.findQuoteForWarsawBible(bibleReference[0]).subscribe({
           next: (data): void => {
             for (let i: number = 0; i < data.verses.length; i++) {
               this.bibleQuote += (data.verses[i].text + "<br>");
             }
-            this.bibleQuote += ("<br><i>" + bibleReference.present() + "</i>");
+            this.bibleQuote += ("<br><i>" + bibleReference[0].present() + "</i>");
           },
           error: (error) => console.error(error)
         });
