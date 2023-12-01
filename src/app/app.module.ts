@@ -32,6 +32,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BibleComponent} from './bible/bible.component';
 import {ConnectionComponent} from './connection/connection.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { StatusComponent } from './status/status.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     UserComponent,
     BibleComponent,
     ConnectionComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,

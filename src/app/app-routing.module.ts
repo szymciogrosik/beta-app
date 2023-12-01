@@ -10,11 +10,16 @@ import {UserComponent} from './user/user.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {BibleComponent} from './bible/bible.component';
 import {ConnectionComponent} from './connection/connection.component';
+import {StatusComponent} from "./status/status.component";
 
 const appRoutes: Routes = [
   {
     path: RedirectionEnum.HOME,
     component: HomeComponent
+  },
+  {
+    path: RedirectionEnum.STATUS,
+    component: StatusComponent
   },
   {
     path: RedirectionEnum.BIBLE,
