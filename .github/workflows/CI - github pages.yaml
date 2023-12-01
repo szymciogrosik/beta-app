@@ -24,6 +24,9 @@ jobs:
       - name: Copy custom 404 page for GitHub pages
         run: cp ${GITHUB_WORKSPACE}/src/404.html ${GITHUB_WORKSPACE}/docs/404.html
 
+      - name: Update last deployment data and time
+        run: sed -i "s/DD-MM-YYYY HH:MM:SS/$(date +'%d-%m-%Y %H:%M:%S')/g" docs/status.json
+
       - name: Commit prod artifacts
         uses: EndBug/add-and-commit@v9
         with:

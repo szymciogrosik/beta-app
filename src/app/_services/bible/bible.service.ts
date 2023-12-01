@@ -15,10 +15,15 @@ export class BibleService {
     return this.findQuote(bibleReference.bibleBook.bibleApi, bibleReference.chapter, bibleReference.verseStart, bibleReference.verseEnd);
   }
 
-  private findQuote(bookApiName: string | undefined, chapter: number, verseStart: number, verseEnd: number): Observable<any> {
-    return this.http.get<any>("https://www.biblia.info.pl/api"
-      + "/biblia/bw/" + bookApiName + "/" + chapter + "/" + verseStart + "-" + verseEnd
-    );
+  private findQuote(bookApiName: string | undefined, chapter: number, verseStart: number | null, verseEnd: number | null): Observable<any> {
+    let requestUrl = "https://www.biblia.info.pl/api" + "/biblia/bw/" + bookApiName + "/" + chapter;
+    if (verseStart) {
+      requestUrl += ("/" + verseStart);
+    }
+    if (verseEnd) {
+      requestUrl += ("-" + verseEnd);
+    }
+    return this.http.get<any>(requestUrl);
   }
 
 }
