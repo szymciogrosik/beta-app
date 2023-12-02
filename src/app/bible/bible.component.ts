@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {BibleService} from "../_services/bible/bible.service";
 import {BiblePerDayService} from "../_services/bible/bible-per-day.service";
-import {BibleReference} from "../_services/bible/bible-reference";
+import {BiblePerDay} from "../_models/bibleperday/output/bible-per-day";
 
 @Component({
   selector: 'app-template',
@@ -9,29 +8,12 @@ import {BibleReference} from "../_services/bible/bible-reference";
   styleUrls: ['./bible.component.scss']
 })
 export class BibleComponent {
-
-  bibleQuote: string = "";
+  biblePerDay: BiblePerDay = new BiblePerDay();
 
   constructor(
-    private bibleService: BibleService,
     private biblePerDayService: BiblePerDayService
   ) {
-    this.biblePerDayService.findQuotesForToday().subscribe({
-      next: (data): void => {
-        let bibleReferenceString: string = data.first_s;
-        let bibleReference: BibleReference[] = this.biblePerDayService.parseResponse(bibleReferenceString);
-        this.bibleService.findQuoteForWarsawBible(bibleReference[0]).subscribe({
-          next: (data): void => {
-            for (let i: number = 0; i < data.verses.length; i++) {
-              this.bibleQuote += (data.verses[i].text + "<br>");
-            }
-            this.bibleQuote += ("<br><i>" + bibleReference[0].present() + "</i>");
-          },
-          error: (error) => console.error(error)
-        });
-      },
-      error: (error) => console.error(error)
-    });
+    this.biblePerDayService.fillPageModel(this.biblePerDay);
   }
 
 }

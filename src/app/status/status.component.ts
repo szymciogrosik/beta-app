@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Status} from "../_models/status";
+import {Status} from "../_models/status/status";
 import {AssetsService} from "../_services/util/assets.service";
 
 @Component({
