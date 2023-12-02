@@ -1,48 +1,102 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BibleReference} from "./bible-reference";
 import {environment} from "../../../environments/environment";
+import {DateService} from "../util/date.service";
+import {AssetsService} from "../util/assets.service";
+import {BiblePerDayContainerInput} from "../../_models/bibleperday/input/bible-per-day-container-input";
+import {BiblePerDay} from "../../_models/bibleperday/output/bible-per-day";
+import {BiblePerDayInput} from "../../_models/bibleperday/input/bible-per-day-input";
+import {BiblePerDayQuoteProviderService} from "./bible-per-day-quote-provider.service";
+import {ContemplationInput} from "../../_models/bibleperday/input/contemplation-input";
+import {ContemplationContainer} from "../../_models/bibleperday/output/contemplation-container";
+import {Contemplation} from "../../_models/bibleperday/output/contemplation";
+import {SpecialOccasionInput} from "../../_models/bibleperday/input/special-occasion-input";
+import {SpecialOccasionContainer} from "../../_models/bibleperday/output/special-occasion-container";
+import {SpecialOccasion} from "../../_models/bibleperday/output/special-occasion";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BiblePerDayService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private dateService: DateService,
+    private assetsService: AssetsService,
+    private quoteProvider: BiblePerDayQuoteProviderService
+  ) {
   }
 
-  public findQuotesForToday(): Observable<any> {
-    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.BIBLE_PER_DAY_API_KEY}));
+  public fillPageModel(biblePerDay: BiblePerDay) {
+    this.getBiblePerDayFullMonth().subscribe({
+      next: (container: BiblePerDayContainerInput): void => {
+        let bpdForToday: BiblePerDayInput = container.biblePerDayList[Number(this.dateService.getCurrentDayShort()) - 1];
+        this.fillPageModelFromInput(bpdForToday, biblePerDay)
+      },
+      error: (error) => console.error(error)
+    });
   }
 
-  public parseResponse(bibleReference: string): BibleReference[] {
-    let allBibleReferenceList: BibleReference[] = [];
-    let allBibleReferenceStringList: string[] = bibleReference.split(" | ");
+  private fillPageModelFromInput(bpdForToday: BiblePerDayInput, targetModel: BiblePerDay): void {
+    targetModel.date.setValue(bpdForToday.date);
+    this.quoteProvider.fillQuoteFromBible(bpdForToday.firstStandard, targetModel.firstStandardText);
+    this.quoteProvider.fillQuoteFromBible(bpdForToday.secondStandard, targetModel.secondStandardText);
+    this.quoteProvider.fillQuoteFromBible(bpdForToday.firstAdditional, targetModel.firstAdditionalText);
+    this.quoteProvider.fillQuoteFromBible(bpdForToday.secondAdditional, targetModel.secondAdditionalText);
+    this.quoteProvider.fillQuoteNotFromBible(bpdForToday.quoteNotFromBible, bpdForToday.quoteNotFromBibleReference, targetModel.quoteNotFromBibleText);
+    this.fillSpecialOccasionList(bpdForToday.specialOccasionList, targetModel.specialOccasionContainer);
+    this.fillContemplation(bpdForToday.contemplationDTO, targetModel.contemplationContainer);
+  }
 
-    for (const singleBibleReferenceString of allBibleReferenceStringList) {
-      let matchesToRegExp: IterableIterator<RegExpMatchArray> =
-        singleBibleReferenceString.matchAll(/^([0-9 ]*[\p{Letter}\p{Mark}]+) ([0-9]+)(,)*([0-9]+)*(-)*([0-9]+)*$/gu);
-        // (number OPT and book MAN) + SPACE + (chapter MAN) + ("," OPT) + (verseStart OPT) + ("-" OPT) + (verseEnd OPT)
-        // ----------- 1 --------------------------- 2 ----------- 3 ----------- 4 -------------- 5 ---------- 6 -------
-      let foundReference: boolean = false;
-      for (const match of matchesToRegExp) {
-        let warsawBibleBookShortcut: string = match[1];
-        let chapter: number = Number(match[2]);
-        let startVerse: number | null = Number(match[4]) ? Number(match[4]) : null;
-        let endVerse: number | null = Number(match[6]) ? Number(match[6]) : null;
-        allBibleReferenceList.push(new BibleReference(warsawBibleBookShortcut, chapter, startVerse, endVerse));
-        foundReference = true;
-        break;
-      }
-      if (!foundReference) {
-        throw new Error("Bible reference '" + singleBibleReferenceString + "' does not match to Regular Expression.")
-      }
+  private fillSpecialOccasionList(specialOccasionList: SpecialOccasionInput[], specialOccasionContainer: SpecialOccasionContainer) {
+    if (!specialOccasionList || specialOccasionList.length == 0) {
+      specialOccasionContainer.wait = false;
+      return;
     }
-    if (allBibleReferenceList.length === 0) {
-      throw new Error("Bible reference '" + bibleReference + "' does not match to any Regular Expression.")
+    let specialOccasionListTmp: SpecialOccasion[] = [];
+    for (const specialOccasion of specialOccasionList) {
+      let occasionTmp: SpecialOccasion = new SpecialOccasion();
+      // Todo: change mapping here
+      occasionTmp.occasion.setValue(specialOccasion.occasion.toString());
+      // Todo: change mapping here
+      occasionTmp.title.setValue(specialOccasion.title.toString());
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.mainQuote, occasionTmp.mainQuoteText);
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.psalm, occasionTmp.psalmText);
+      this.quoteProvider.fillQuoteNotFromBible(specialOccasion.worshipSongs.join("<br/>"), "", occasionTmp.worshipSongs);
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.apostolicLesson, occasionTmp.apostolicLessonText);
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.sermonTextList.join(" | "), occasionTmp.sermonTextListText);
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.oldTestament, occasionTmp.oldTestamentText);
+      this.quoteProvider.fillQuoteFromBible(specialOccasion.gospel, occasionTmp.gospelText);
+      specialOccasionListTmp.push(occasionTmp);
     }
-    return allBibleReferenceList;
+    specialOccasionContainer.specialOccasionList = specialOccasionListTmp;
+  }
+
+  private fillContemplation(contemplationDTO: ContemplationInput, contemplationContainer: ContemplationContainer) {
+    if (!contemplationDTO) {
+      contemplationContainer.wait = false;
+      return;
+    }
+    let contemplation: Contemplation = new Contemplation();
+    this.quoteProvider.fillQuoteFromBible(contemplationDTO.bibleReference, contemplation.bibleText);
+    this.quoteProvider.fillQuoteNotFromBible(contemplationDTO.text, contemplationDTO.textReference, contemplation.text);
+    contemplationContainer.contemplation = contemplation;
+  }
+
+  private getBiblePerDayFullMonth(): Observable<any> {
+    return this.assetsService.getResource(this.getBiblePerDayFullMonthPath());
+  }
+
+  private getBiblePerDayFullMonthPath(): string {
+    let currentYear: string = this.dateService.getCurrentYear();
+    let currentMonth: string = this.dateService.getCurrentMonth();
+    return "bibleperday/" + currentYear + "/BPD_" + currentMonth + ".json";
+  }
+
+  // Todo: deprecated
+  private findQuotesForToday(): Observable<any> {
+    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.bible_per_day_api_key}));
   }
 
 }

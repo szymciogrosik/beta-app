@@ -2,7 +2,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {User} from '../../_models/user';
+import {User} from '../../_models/user/user';
 import {RoleEnum} from '../../../utils/role.enum';
 import {AuthService} from '../auth/auth.service';
 
@@ -32,7 +32,7 @@ export class UserService {
 
   // Todo: for now only sample
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(environment.BACKEND_URL + '/users');
+    return this.http.get<User[]>(environment.backend_url + '/users');
   }
 
 }

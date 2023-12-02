@@ -16,5 +16,6 @@
   "login.validation.mandatoryPassword": "Password is mandatory",
   "login.validation.invalidEmail": "Invalid email",
   "login.approve.button": "Login",
-  "bible.cardHeader": "Quote for today"
+  "bible.cardHeader": "Quote for today",
+  "status.lastBuildTime": "Last deploy date"
 }

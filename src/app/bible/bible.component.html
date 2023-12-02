@@ -1,14 +1,179 @@
 <mat-card>
   <mat-card-title>
-    <h2>{{ 'bible.cardHeader' | translate }}</h2>
+    <h2>Pierwszy standardowy</h2>
   </mat-card-title>
   <mat-card-content>
-    <div *ngIf="bibleQuote" [innerHTML]="bibleQuote" style="text-align: center;">
+    <div *ngIf="this.biblePerDay?.firstStandardText?.isReady()" [innerHTML]="this.biblePerDay.firstStandardText.value">
     </div>
-    <div *ngIf="!bibleQuote">
+    <div *ngIf="!this.biblePerDay?.firstStandardText?.isReady()">
       <mat-spinner [diameter]="80"></mat-spinner>
     </div>
   </mat-card-content>
 </mat-card>
 
-<router-outlet></router-outlet>
+<mat-card>
+  <mat-card-title>
+    <h2>Drugi standardowy</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="this.biblePerDay?.secondStandardText?.isReady()" [innerHTML]="this.biblePerDay.secondStandardText.value">
+    </div>
+    <div *ngIf="!this.biblePerDay?.secondStandardText?.isReady()">
+      <mat-spinner [diameter]="80"></mat-spinner>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <h2>Pierwszy dodatkowy</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="this.biblePerDay?.firstAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.firstAdditionalText.value">
+    </div>
+    <div *ngIf="!this.biblePerDay?.firstAdditionalText?.isReady()">
+      <mat-spinner [diameter]="80"></mat-spinner>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <h2>Drugi dodatkowy</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="this.biblePerDay?.secondAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.secondAdditionalText.value">
+    </div>
+    <div *ngIf="!this.biblePerDay?.secondAdditionalText?.isReady()">
+      <mat-spinner [diameter]="80"></mat-spinner>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>
+    <h2>Cytat nie z Biblii</h2>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngIf="this.biblePerDay?.quoteNotFromBibleText?.isReady()" [innerHTML]="this.biblePerDay.quoteNotFromBibleText.value">
+    </div>
+    <div *ngIf="!this.biblePerDay?.quoteNotFromBibleText?.isReady()">
+      <mat-spinner [diameter]="80"></mat-spinner>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div *ngFor="let specialOccasion of this.biblePerDay?.specialOccasionContainer?.specialOccasionList">
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Glowny fragment"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.mainQuoteText?.isReady()" [innerHTML]="specialOccasion.mainQuoteText.value">
+      </div>
+      <div *ngIf="!specialOccasion.mainQuoteText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Psalm"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.psalmText?.isReady()" [innerHTML]="specialOccasion.psalmText.value">
+      </div>
+      <div *ngIf="!specialOccasion.psalmText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Uwielbienie"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.worshipSongs?.isReady()" [innerHTML]="specialOccasion.worshipSongs.value">
+      </div>
+      <div *ngIf="!specialOccasion.worshipSongs?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Lekcja apostolska"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.apostolicLessonText?.isReady()" [innerHTML]="specialOccasion.apostolicLessonText.value">
+      </div>
+      <div *ngIf="!specialOccasion.apostolicLessonText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Tekst kazalny"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.sermonTextListText?.isReady()" [innerHTML]="specialOccasion.sermonTextListText.value">
+      </div>
+      <div *ngIf="!specialOccasion.sermonTextListText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Stary testament"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.oldTestamentText?.isReady()" [innerHTML]="specialOccasion.oldTestamentText.value">
+      </div>
+      <div *ngIf="!specialOccasion.oldTestamentText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <h2>{{ specialOccasion?.title?.value + " - " + specialOccasion?.occasion?.value + " - Ewangelia"}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="specialOccasion.gospelText?.isReady()" [innerHTML]="specialOccasion.gospelText.value">
+      </div>
+      <div *ngIf="!specialOccasion.gospelText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation">
+  <mat-card>
+    <mat-card-title>
+      <h2>Rozwazanie - tekst biblijny</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.bibleText.value">
+      </div>
+      <div *ngIf="!this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>
+      <h2>Rozwazanie - tekst</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.text.value">
+      </div>
+      <div *ngIf="!this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()">
+        <mat-spinner [diameter]="80"></mat-spinner>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
