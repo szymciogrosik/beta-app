@@ -32,7 +32,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BibleComponent} from './bible/bible.component';
 import {ConnectionComponent} from './connection/connection.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { StatusComponent } from './status/status.component';
+import {StatusComponent} from './status/status.component';
+import {AssetsService} from "./_services/util/assets.service";
 
 @NgModule({
   declarations: [
@@ -89,5 +90,5 @@ export class AppModule {
 
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+  return new TranslateHttpLoader(http, AssetsService.BASE_PATH + "i18n/", ".json");
 }

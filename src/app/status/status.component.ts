@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Component} from '@angular/core';
 import {Status} from "../_models/status";
-import {Observable} from "rxjs";
+import {AssetsService} from "../_services/util/assets.service";
 
 @Component({
   selector: 'app-status',
@@ -9,19 +8,15 @@ import {Observable} from "rxjs";
   styleUrls: ['./status.component.scss']
 })
 export class StatusComponent {
-  private static STATUS_URL: string = './assets/status/status.json';
+  private STATUS_URL: string = 'status/status.json';
 
-  lastDeployTime: any = '';
+  lastDeployTime: string = '';
 
-  constructor(private httpClient: HttpClient) {
-    this.getJSON().subscribe({
+  constructor(private readAssetsService: AssetsService) {
+    this.readAssetsService.getResource(this.STATUS_URL).subscribe({
       next: (data: Status) => this.lastDeployTime = data.lastDeployTime,
       error: (error) => console.error(error)
     });
-  }
-
-  public getJSON(): Observable<any> {
-    return this.httpClient.get(StatusComponent.STATUS_URL);
   }
 
 }
