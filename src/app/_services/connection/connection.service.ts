@@ -17,7 +17,7 @@ export class ConnectionService {
   }
 
   public checkBackendAlive(): void {
-    this.http.get<any>(environment.BACKEND_URL + '/alive').subscribe({
+    this.http.get<any>(environment.backend_url + '/alive').subscribe({
       next: (data) => this.backendAliveSubject.next(true),
       error: (error) => this.backendAliveSubject.next(false)
     });

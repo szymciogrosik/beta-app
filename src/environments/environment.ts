@@ -1,9 +1,9 @@
 export const environment = {
-  PRODUCTION: false,
-  BACKEND_URL: 'http://localhost:8080',
-  LOGGED_USER_KEY: 'LoggedUser',
-  SECRET_USER_KEY_VALUE: 'VI!pZ9&V@~We#22N5T_8hVp3k04y)08u$#Wd$fxJ',
-  DEFAULT_LANGUAGE: 'en',
-  SELECTED_LANGUAGE_KEY: 'Language',
-  BIBLE_PER_DAY_API_KEY: '3j98117XFhTP4Ca2Dj12urMWF7hi9GM5',
+  production: false,
+  backend_url: 'http://localhost:8080',
+  logged_user_key: 'LoggedUser',
+  secret_user_key_value: 'VI!pZ9&V@~We#22N5T_8hVp3k04y)08u$#Wd$fxJ',
+  default_language: 'en',
+  selected_language_key: 'Language',
+  bible_per_day_api_key: '3j98117XFhTP4Ca2Dj12urMWF7hi9GM5',
 };

@@ -27,11 +27,11 @@ export class AuthService {
   }
 
   private static removeUserFromStorage(): void {
-    AuthService.removeDataFromStorage(environment.LOGGED_USER_KEY);
+    AuthService.removeDataFromStorage(environment.logged_user_key);
   }
 
   private static removeTokenFromStorage(): void {
-    AuthService.removeDataFromStorage(environment.SECRET_USER_KEY_VALUE);
+    AuthService.removeDataFromStorage(environment.secret_user_key_value);
   }
 
   public get currentUserValue(): User {
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   public login(loginData: string): Observable<User> {
-    return this.http.post<any>(environment.BACKEND_URL + AuthPath.SIGNIN, loginData)
+    return this.http.post<any>(environment.backend_url + AuthPath.SIGNIN, loginData)
       .pipe(map(res => {
         let user = new User();
         // login successful if there's a jwt token in the response
@@ -74,7 +74,7 @@ export class AuthService {
 
   private addOrUpdateUserToStorage(user: User): void {
     AuthService.removeUserFromStorage();
-    this.addDataToStorage(environment.LOGGED_USER_KEY, user, environment.SECRET_USER_KEY_VALUE);
+    this.addDataToStorage(environment.logged_user_key, user, environment.secret_user_key_value);
   }
 
   private getDataFromStorage(key: string, cryptKey: string): any {
@@ -90,7 +90,7 @@ export class AuthService {
   }
 
   private getUserFromStorage(): User {
-    return this.getDataFromStorage(environment.LOGGED_USER_KEY, environment.SECRET_USER_KEY_VALUE);
+    return this.getDataFromStorage(environment.logged_user_key, environment.secret_user_key_value);
   }
 
   public isLoggedIn(): boolean {

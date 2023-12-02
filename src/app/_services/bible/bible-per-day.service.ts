@@ -13,7 +13,7 @@ export class BiblePerDayService {
   }
 
   public findQuotesForToday(): Observable<any> {
-    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.BIBLE_PER_DAY_API_KEY}));
+    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.bible_per_day_api_key}));
   }
 
   public parseResponse(bibleReference: string): BibleReference[] {

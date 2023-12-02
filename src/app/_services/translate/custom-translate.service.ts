@@ -13,17 +13,17 @@ export class CustomTranslateService {
   }
 
   public setLoadedOrDefaultLanguage(): void {
-    const savedLanguage = localStorage.getItem(environment.SELECTED_LANGUAGE_KEY);
-    const language = savedLanguage !== null && savedLanguage !== 'null' ? savedLanguage : environment.DEFAULT_LANGUAGE;
+    const savedLanguage = localStorage.getItem(environment.selected_language_key);
+    const language = savedLanguage !== null && savedLanguage !== 'null' ? savedLanguage : environment.default_language;
 
     this.translateService.setDefaultLang(language);
     this.translateService.use(language);
-    localStorage.setItem(environment.SELECTED_LANGUAGE_KEY, language);
+    localStorage.setItem(environment.selected_language_key, language);
   }
 
   public setLanguage(language: string): void {
     this.translateService.use(language);
-    localStorage.setItem(environment.SELECTED_LANGUAGE_KEY, language);
+    localStorage.setItem(environment.selected_language_key, language);
   }
 
   public get(key: string): string {

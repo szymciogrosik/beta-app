@@ -32,7 +32,7 @@ export class UserService {
 
   // Todo: for now only sample
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(environment.BACKEND_URL + '/users');
+    return this.http.get<User[]>(environment.backend_url + '/users');
   }
 
 }
