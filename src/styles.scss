@@ -35,6 +35,12 @@ $color-background: #FAFAFA;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.short-page-content {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* mat-card general styles */
 mat-card-title {
   text-align: center;

@@ -36,6 +36,7 @@ import {StatusComponent} from './status/status.component';
 import {AssetsService} from "./_services/util/assets.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -51,38 +52,39 @@ import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
     ConnectionComponent,
     StatusComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    RouterModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    routing,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatListModule,
-    MatToolbarModule,
-    LayoutModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatCardModule,
-    MatInputModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    MatProgressSpinnerModule,
-    MatDatepickerModule,
-    MatLuxonDateModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        RouterModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        routing,
+        MatFormFieldModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatListModule,
+        MatToolbarModule,
+        LayoutModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatCardModule,
+        MatInputModule,
+        FormsModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        MatProgressSpinnerModule,
+        MatDatepickerModule,
+        MatLuxonDateModule,
+        MatGridListModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
