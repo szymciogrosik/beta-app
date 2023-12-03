@@ -26,11 +26,6 @@ export class DateService {
     return nowInWarsaw.toFormat('dd');
   }
 
-  public getCurrentDayShort() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('dd');
-  }
-
   public getCurrentMonth() : string {
     const nowInWarsaw = DateTime.now().setZone(this.timeZone);
     return nowInWarsaw.toFormat('MM');

@@ -31,7 +31,7 @@ export class BiblePerDayService {
   public fillPageModel(biblePerDay: BiblePerDay) {
     this.getBiblePerDayFullMonth().subscribe({
       next: (container: BiblePerDayContainerInput): void => {
-        let bpdForToday: BiblePerDayInput = container.biblePerDayList[Number(this.dateService.getCurrentDayShort()) - 1];
+        let bpdForToday: BiblePerDayInput = container.biblePerDayList[Number(this.dateService.getCurrentDay()) - 1];
         this.fillPageModelFromInput(bpdForToday, biblePerDay)
       },
       error: (error) => console.error(error)
