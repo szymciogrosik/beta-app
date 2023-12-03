@@ -1,3 +1,11 @@
+<mat-form-field>
+  <mat-label>Input disabled</mat-label>
+  <input matInput [matDatepicker]="dp3" disabled>
+  <mat-hint>DD/MM/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+</mat-form-field>
+
 <mat-card>
   <mat-card-title>
     <h2>Pierwszy standardowy</h2>

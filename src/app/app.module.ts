@@ -34,6 +34,8 @@ import {ConnectionComponent} from './connection/connection.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {StatusComponent} from './status/status.component';
 import {AssetsService} from "./_services/util/assets.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
 
 @NgModule({
   declarations: [
@@ -77,11 +79,13 @@ import {AssetsService} from "./_services/util/assets.service";
         deps: [HttpClient]
       }
     }),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatLuxonDateModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

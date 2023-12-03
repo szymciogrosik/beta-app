@@ -32,11 +32,11 @@ export class BiblePerDayParserService {
         break;
       }
       if (!foundReference) {
-        throw new Error("Bible reference '" + singleBibleReferenceString + "' does not match to Regular Expression.")
+        throw new Error("Bible reference '" + singleBibleReferenceString + "' does not match to Regular Expression.");
       }
     }
     if (allBibleReferenceList.length === 0) {
-      throw new Error("Bible reference '" + bibleReferences + "' does not match to any Regular Expression.")
+      throw new Error("Bible reference '" + bibleReferences + "' does not match to any Regular Expression.");
     }
     return allBibleReferenceList;
   }

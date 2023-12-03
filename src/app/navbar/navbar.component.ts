@@ -4,6 +4,7 @@ import {UserService} from '../_services/user/user.service';
 import {RedirectionEnum} from '../../utils/redirection.enum';
 import {AuthService} from '../_services/auth/auth.service';
 import {CustomTranslateService} from '../_services/translate/custom-translate.service';
+import {LanguageEnum} from "../_services/translate/language-enum";
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ import {CustomTranslateService} from '../_services/translate/custom-translate.se
 })
 export class NavbarComponent implements OnInit {
 
-  public rp = RedirectionEnum;
+  protected readonly LanguageEnum = LanguageEnum;
+  protected readonly rp = RedirectionEnum;
 
   constructor(
     private router: Router,
