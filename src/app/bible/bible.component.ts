@@ -26,6 +26,7 @@ export class BibleComponent {
     this.loadDataOnPage();
 
     this.selectedDate.valueChanges.subscribe(() => {
+      this.biblePerDay = new BiblePerDay();
       this.loadDataOnPage();
     });
   }

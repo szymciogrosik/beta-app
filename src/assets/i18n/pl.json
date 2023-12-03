@@ -2,6 +2,7 @@
   "language.english": "English",
   "language.polish": "Polski",
   "datePicker.formatHint": "DD/MM/YYYY",
+  "datePicker.chooseDate": "Wybierz datę",
   "navbar.tab.home": "Strona startowa",
   "navbar.tab.bible": "Biblia",
   "navbar.tab.signIn": "Zaloguj",

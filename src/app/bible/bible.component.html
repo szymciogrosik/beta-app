@@ -1,10 +1,14 @@
-<mat-form-field>
-  <mat-label>Input disabled</mat-label>
-  <input matInput [min]="this.minDate" [max]="this.maxDate" [matDatepicker]="datePicker" [formControl]="selectedDate">
-  <mat-hint>{{ 'datePicker.formatHint' | translate }}</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
-  <mat-datepicker #datePicker disabled="false"></mat-datepicker>
-</mat-form-field>
+<mat-card>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'datePicker.chooseDate' | translate }}</mat-label>
+      <input matInput [min]="this.minDate" [max]="this.maxDate" [matDatepicker]="datePicker" [formControl]="selectedDate"
+             placeholder="{{ 'datePicker.formatHint' | translate }}" readonly required>
+      <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
 
 <mat-card>
   <mat-card-title>
