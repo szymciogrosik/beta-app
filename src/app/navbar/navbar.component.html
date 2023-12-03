@@ -70,6 +70,6 @@
 
 <!-- Language sub-menu -->
 <mat-menu xPosition="before" #languageMenu="matMenu">
-  <button mat-menu-item (click)="this.translateService.setLanguage('pl')">{{ 'language.polish' | translate }}</button>
-  <button mat-menu-item (click)="this.translateService.setLanguage('en')">{{ 'language.english' | translate }}</button>
+  <button mat-menu-item (click)="this.translateService.setLanguage(LanguageEnum.POLISH)">{{ 'language.polish' | translate }}</button>
+  <button mat-menu-item (click)="this.translateService.setLanguage(LanguageEnum.ENGLISH)">{{ 'language.english' | translate }}</button>
 </mat-menu>

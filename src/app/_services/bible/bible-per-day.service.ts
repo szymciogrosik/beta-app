@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
 import {DateService} from "../util/date.service";
 import {AssetsService} from "../util/assets.service";
 import {BiblePerDayContainerInput} from "../../_models/bibleperday/input/bible-per-day-container-input";
@@ -21,17 +20,16 @@ import {SpecialOccasion} from "../../_models/bibleperday/output/special-occasion
 export class BiblePerDayService {
 
   constructor(
-    private http: HttpClient,
     private dateService: DateService,
     private assetsService: AssetsService,
     private quoteProvider: BiblePerDayQuoteProviderService
   ) {
   }
 
-  public fillPageModel(biblePerDay: BiblePerDay) {
-    this.getBiblePerDayFullMonth().subscribe({
+  public fillPageModel(year: number, month: number, day: number, biblePerDay: BiblePerDay): void {
+    this.getBiblePerDayFullMonth(year, month).subscribe({
       next: (container: BiblePerDayContainerInput): void => {
-        let bpdForToday: BiblePerDayInput = container.biblePerDayList[Number(this.dateService.getCurrentDayShort()) - 1];
+        let bpdForToday: BiblePerDayInput = container.biblePerDayList[day - 1];
         this.fillPageModelFromInput(bpdForToday, biblePerDay)
       },
       error: (error) => console.error(error)
@@ -73,7 +71,7 @@ export class BiblePerDayService {
     specialOccasionContainer.specialOccasionList = specialOccasionListTmp;
   }
 
-  private fillContemplation(contemplationDTO: ContemplationInput, contemplationContainer: ContemplationContainer) {
+  private fillContemplation(contemplationDTO: ContemplationInput, contemplationContainer: ContemplationContainer): void {
     if (!contemplationDTO) {
       contemplationContainer.wait = false;
       return;
@@ -84,19 +82,12 @@ export class BiblePerDayService {
     contemplationContainer.contemplation = contemplation;
   }
 
-  private getBiblePerDayFullMonth(): Observable<any> {
-    return this.assetsService.getResource(this.getBiblePerDayFullMonthPath());
+  private getBiblePerDayFullMonth(year: number | undefined, month: number | undefined): Observable<any> {
+    return this.assetsService.getResource(this.getBiblePerDayFullMonthPath(year, month));
   }
 
-  private getBiblePerDayFullMonthPath(): string {
-    let currentYear: string = this.dateService.getCurrentYear();
-    let currentMonth: string = this.dateService.getCurrentMonth();
-    return "bibleperday/" + currentYear + "/BPD_" + currentMonth + ".json";
-  }
-
-  // Todo: deprecated
-  private findQuotesForToday(): Observable<any> {
-    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.bible_per_day_api_key}));
+  private getBiblePerDayFullMonthPath(year: number | undefined, month: number | undefined): string {
+    return "bibleperday/" + year + "/BPD_" + month + ".json";
   }
 
 }

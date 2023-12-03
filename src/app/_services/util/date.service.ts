@@ -8,7 +8,6 @@ export class DateService {
   private timeZone: string = 'Europe/Warsaw';
 
   constructor() {
-
   }
 
   public getCurrentDateTime() : string {
@@ -21,12 +20,12 @@ export class DateService {
       return nowInWarsaw.toFormat('dd-MM-yyyy');
   }
 
-  public getCurrentDay() : string {
+  public getCurrentDateIsoFormat() : string {
     const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('dd');
+    return nowInWarsaw.toFormat('yyyy-MM-dd');
   }
 
-  public getCurrentDayShort() : string {
+  public getCurrentDay() : string {
     const nowInWarsaw = DateTime.now().setZone(this.timeZone);
     return nowInWarsaw.toFormat('dd');
   }
