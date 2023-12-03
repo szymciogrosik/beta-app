@@ -35,13 +35,19 @@ $color-background: #FAFAFA;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.short-page-content {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* mat-card general styles */
 mat-card-title {
   text-align: center;
-  padding: 0 0 20px 0;
+  padding: 10px 0 20px 0;
 }
 mat-card {
-  padding: 20px;
+  padding: 10px;
 }
 mat-form-field {
   width: 100%;

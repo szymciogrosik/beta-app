@@ -36,6 +36,8 @@ import {StatusComponent} from './status/status.component';
 import {AssetsService} from "./_services/util/assets.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
     }),
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatLuxonDateModule
+    MatLuxonDateModule,
+    MatGridListModule,
+    MatTabsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},

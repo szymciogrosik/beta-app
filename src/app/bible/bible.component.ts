@@ -16,16 +16,28 @@ export class BibleComponent {
   maxDate: Date;
   selectedDate: FormControl<DateTime | null>;
 
+  links: string[] = ['Standard', 'Second', 'Third'];
+  activeLink: string = this.links[0];
+
   constructor(
     private biblePerDayService: BiblePerDayService,
     private dateService: DateService
   ) {
+    this.init();
+  }
+
+  addLink() {
+    this.links.push(`Link ${this.links.length + 1}`);
+  }
+
+  private init(): void {
     this.minDate = new Date("2023-1-1");
     this.maxDate = new Date("2023-12-31");
     this.selectedDate = new FormControl(this.dateService.getCurrentDateTime());
     this.loadDataOnPage();
 
-    this.selectedDate.valueChanges.subscribe(() => {
+    this.selectedDate.valueChanges.subscribe((): void => {
+      this.biblePerDay = new BiblePerDay();
       this.loadDataOnPage();
     });
   }
