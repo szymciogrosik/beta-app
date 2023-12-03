@@ -1,6 +1,7 @@
 {
   "language.english": "English",
   "language.polish": "Polski",
+  "datePicker.formatHint": "MM/DD/YYYY",
   "navbar.tab.home": "Home",
   "navbar.tab.bible": "Bible",
   "navbar.tab.signIn": "Sign in",

@@ -1,9 +1,9 @@
 <mat-form-field>
   <mat-label>Input disabled</mat-label>
-  <input matInput [matDatepicker]="dp3" disabled>
-  <mat-hint>DD/MM/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
-  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  <input matInput [min]="this.minDate" [max]="this.maxDate" [matDatepicker]="datePicker" [formControl]="selectedDate">
+  <mat-hint>{{ 'datePicker.formatHint' | translate }}</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+  <mat-datepicker #datePicker disabled="false"></mat-datepicker>
 </mat-form-field>
 
 <mat-card>
