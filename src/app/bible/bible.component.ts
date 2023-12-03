@@ -22,7 +22,7 @@ export class BibleComponent {
   ) {
     this.minDate = new Date("2023-1-1");
     this.maxDate = new Date("2023-12-31");
-    this.selectedDate = new FormControl(DateTime.now());
+    this.selectedDate = new FormControl(this.dateService.getCurrentDateTime());
     this.loadDataOnPage();
 
     this.selectedDate.valueChanges.subscribe(() => {

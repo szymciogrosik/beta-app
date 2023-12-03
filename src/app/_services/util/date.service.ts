@@ -10,34 +10,16 @@ export class DateService {
   constructor() {
   }
 
-  public getCurrentDateTime() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('dd-MM-yyyy HH:mm:ss');
+  public presentCurrentDateTime() : string {
+    return this.getCurrentDateTime().toFormat('dd-MM-yyyy HH:mm:ss');
   }
 
-  public getCurrentDate() : string {
-      const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-      return nowInWarsaw.toFormat('dd-MM-yyyy');
+  public presentCurrentDate() : string {
+      return this.getCurrentDateTime().toFormat('dd-MM-yyyy');
   }
 
-  public getCurrentDateIsoFormat() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('yyyy-MM-dd');
-  }
-
-  public getCurrentDay() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('dd');
-  }
-
-  public getCurrentMonth() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('MM');
-  }
-
-  public getCurrentYear() : string {
-    const nowInWarsaw = DateTime.now().setZone(this.timeZone);
-    return nowInWarsaw.toFormat('yyyy');
+  public getCurrentDateTime(): DateTime {
+    return DateTime.now().setZone(this.timeZone);
   }
 
 }
