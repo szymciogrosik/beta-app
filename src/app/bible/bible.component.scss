@@ -2,10 +2,19 @@ mat-card {
   margin: 30px 0;
 }
 
-//.bible-content-text {
-//  text-align: center !important;
-//}
-//
-//.bible-reference {
-//  text-align: center !important;
-//}
+@media (min-width: 701px) {
+  .flex-container {
+    display: flex;
+    justify-content: center;
+  }
+  .flex-element {
+    margin-bottom: 0;
+    flex: 1;
+  }
+  .flex-element-left {
+    margin-right: 10px;
+  }
+  .flex-element-right {
+    margin-left: 10px;
+  }
+}

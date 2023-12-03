@@ -37,6 +37,7 @@ import {AssetsService} from "./_services/util/assets.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatLuxonDateModule} from "@angular/material-luxon-adapter";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -52,39 +53,40 @@ import {MatGridListModule} from "@angular/material/grid-list";
     ConnectionComponent,
     StatusComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatSliderModule,
-        RouterModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        routing,
-        MatFormFieldModule,
-        MatSnackBarModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatListModule,
-        MatToolbarModule,
-        LayoutModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatCardModule,
-        MatInputModule,
-        FormsModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        MatProgressSpinnerModule,
-        MatDatepickerModule,
-        MatLuxonDateModule,
-        MatGridListModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    routing,
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatListModule,
+    MatToolbarModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatLuxonDateModule,
+    MatGridListModule,
+    MatTabsModule
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
