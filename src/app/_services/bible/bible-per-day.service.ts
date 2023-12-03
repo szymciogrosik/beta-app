@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
 import {DateService} from "../util/date.service";
 import {AssetsService} from "../util/assets.service";
 import {BiblePerDayContainerInput} from "../../_models/bibleperday/input/bible-per-day-container-input";
@@ -28,7 +27,7 @@ export class BiblePerDayService {
   ) {
   }
 
-  public fillPageModel(biblePerDay: BiblePerDay) {
+  public fillPageModel(biblePerDay: BiblePerDay): void {
     this.getBiblePerDayFullMonth().subscribe({
       next: (container: BiblePerDayContainerInput): void => {
         let bpdForToday: BiblePerDayInput = container.biblePerDayList[Number(this.dateService.getCurrentDay()) - 1];
@@ -73,7 +72,7 @@ export class BiblePerDayService {
     specialOccasionContainer.specialOccasionList = specialOccasionListTmp;
   }
 
-  private fillContemplation(contemplationDTO: ContemplationInput, contemplationContainer: ContemplationContainer) {
+  private fillContemplation(contemplationDTO: ContemplationInput, contemplationContainer: ContemplationContainer): void {
     if (!contemplationDTO) {
       contemplationContainer.wait = false;
       return;
@@ -92,11 +91,6 @@ export class BiblePerDayService {
     let currentYear: string = this.dateService.getCurrentYear();
     let currentMonth: string = this.dateService.getCurrentMonth();
     return "bibleperday/" + currentYear + "/BPD_" + currentMonth + ".json";
-  }
-
-  // Todo: deprecated
-  private findQuotesForToday(): Observable<any> {
-    return this.http.post<any>("https://db.bncd.stream/bncd/api/open-node/", JSON.stringify({key: environment.bible_per_day_api_key}));
   }
 
 }
