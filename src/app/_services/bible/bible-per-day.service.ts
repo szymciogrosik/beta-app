@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DateService} from "../util/date.service";
 import {AssetsService} from "../util/assets.service";
@@ -87,7 +86,14 @@ export class BiblePerDayService {
   }
 
   private getBiblePerDayFullMonthPath(year: number | undefined, month: number | undefined): string {
-    return "bibleperday/" + year + "/BPD_" + month + ".json";
+    return "bibleperday/" + year + "/BPD_" + this.getMonthForFileString(month) + ".json";
+  }
+
+  private getMonthForFileString(month: number | undefined): string {
+    if (month === undefined) {
+      throw new Error("Month cannot be undefined!");
+    }
+    return (month < 10 ? "0" : "") + month;
   }
 
 }
