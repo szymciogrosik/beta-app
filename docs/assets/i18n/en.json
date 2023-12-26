@@ -18,6 +18,15 @@
   "login.validation.mandatoryPassword": "Password is mandatory",
   "login.validation.invalidEmail": "Invalid email",
   "login.approve.button": "Login",
-  "bible.cardHeader": "Quote for today",
+  "bible.daily": "Daily",
+  "bible.occasion": "Occasion",
+  "bible.mainQuote": "Main quote",
+  "bible.psalm": "Psalm",
+  "bible.worship": "Worship",
+  "bible.apostolicLesson": "Apostolic lesson",
+  "bible.sermonText": "Sermon text",
+  "bible.oldTestament": "Old testament",
+  "bible.gospel": "Gospel",
+  "bible.contemplation": "Contemplation",
   "status.lastBuildTime": "Last deploy date"
 }
