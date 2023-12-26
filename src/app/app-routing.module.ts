@@ -15,7 +15,8 @@ import {StatusComponent} from "./status/status.component";
 const appRoutes: Routes = [
   {
     path: RedirectionEnum.HOME,
-    component: HomeComponent
+    // Todo: replace when main page will be ready
+    component: BibleComponent
   },
   {
     path: RedirectionEnum.STATUS,

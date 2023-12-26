@@ -11,12 +11,9 @@
 </mat-card>
 
 <mat-tab-group>
-  <mat-tab label="Daily">
+  <mat-tab label="{{ 'bible.daily' | translate }}">
     <div class="flex-container">
       <mat-card class="flex-element flex-element-left">
-        <mat-card-title>
-          <h2>Pierwszy standardowy</h2>
-        </mat-card-title>
         <mat-card-content>
           <div *ngIf="this.biblePerDay?.firstStandardText?.isReady()" [innerHTML]="this.biblePerDay.firstStandardText.value">
           </div>
@@ -26,9 +23,6 @@
         </mat-card-content>
       </mat-card>
       <mat-card class="flex-element flex-element-right">
-        <mat-card-title>
-          <h2>Drugi standardowy</h2>
-        </mat-card-title>
         <mat-card-content>
           <div *ngIf="this.biblePerDay?.secondStandardText?.isReady()" [innerHTML]="this.biblePerDay.secondStandardText.value">
           </div>
@@ -40,9 +34,6 @@
     </div>
 
     <mat-card *ngIf="this.biblePerDay?.firstAdditionalText?.value">
-      <mat-card-title>
-        <h2>Pierwszy dodatkowy</h2>
-      </mat-card-title>
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.firstAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.firstAdditionalText.value">
         </div>
@@ -53,9 +44,6 @@
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.secondAdditionalText?.value">
-      <mat-card-title>
-        <h2>Drugi dodatkowy</h2>
-      </mat-card-title>
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.secondAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.secondAdditionalText.value">
         </div>
@@ -65,10 +53,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
-      <mat-card-title>
-        <h2>Cytat nie z Biblii</h2>
-      </mat-card-title>
+    <mat-card *ngIf="this.biblePerDay?.quoteNotFromBibleText?.value">
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.quoteNotFromBibleText?.isReady()" [innerHTML]="this.biblePerDay.quoteNotFromBibleText.value">
         </div>
@@ -79,13 +64,18 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="Special occasion" *ngIf="this.biblePerDay?.specialOccasionContainer?.specialOccasionList">
+  <mat-tab label="{{ 'bible.occasion' | translate }}" *ngIf="this.biblePerDay?.specialOccasionContainer?.specialOccasionList">
     <mat-tab-group>
       <div *ngFor="let specialOccasion of this.biblePerDay?.specialOccasionContainer?.specialOccasionList">
-        <mat-tab label="{{ specialOccasion?.title?.value + ' - ' + specialOccasion?.occasion?.value }}">
-          <mat-card>
+        <mat-tab label="{{ 'bible.occasion' | translate }} {{ this.biblePerDay.specialOccasionContainer.specialOccasionList.indexOf(specialOccasion) + 1 }}">
+          <mat-card *ngIf="this.specialOccasion?.title?.value">
             <mat-card-title>
-              <h2>Glowny fragment</h2>
+              <h2>{{ specialOccasion?.title?.value }}</h2>
+            </mat-card-title>
+          </mat-card>
+          <mat-card *ngIf="this.specialOccasion?.mainQuoteText?.value">
+            <mat-card-title>
+              <h2>{{ 'bible.mainQuote' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.mainQuoteText?.isReady()" [innerHTML]="specialOccasion.mainQuoteText.value">
@@ -95,9 +85,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.psalmText?.value">
             <mat-card-title>
-              <h2>Psalm</h2>
+              <h2>{{ 'bible.psalm' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.psalmText?.isReady()" [innerHTML]="specialOccasion.psalmText.value">
@@ -107,9 +97,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.worshipSongs?.value">
             <mat-card-title>
-              <h2>Uwielbienie</h2>
+              <h2>{{ 'bible.worship' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.worshipSongs?.isReady()" [innerHTML]="specialOccasion.worshipSongs.value">
@@ -119,9 +109,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.apostolicLessonText?.value">
             <mat-card-title>
-              <h2>Lekcja apostolska</h2>
+              <h2>{{ 'bible.apostolicLesson' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.apostolicLessonText?.isReady()" [innerHTML]="specialOccasion.apostolicLessonText.value">
@@ -131,9 +121,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.sermonTextListText?.value">
             <mat-card-title>
-              <h2>Tekst kazalny</h2>
+              <h2>{{ 'bible.sermonText' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.sermonTextListText?.isReady()" [innerHTML]="specialOccasion.sermonTextListText.value">
@@ -143,9 +133,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.oldTestamentText?.value">
             <mat-card-title>
-              <h2>Stary testament</h2>
+              <h2>{{ 'bible.oldTestament' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.oldTestamentText?.isReady()" [innerHTML]="specialOccasion.oldTestamentText.value">
@@ -155,9 +145,9 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <mat-card>
+          <mat-card *ngIf="this.specialOccasion?.gospelText?.value">
             <mat-card-title>
-              <h2>Ewangelia</h2>
+              <h2>{{ 'bible.gospel' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
               <div *ngIf="specialOccasion.gospelText?.isReady()" [innerHTML]="specialOccasion.gospelText.value">
@@ -172,8 +162,8 @@
     </mat-tab-group>
   </mat-tab>
 
-  <mat-tab label="Contemplation" *ngIf="this.biblePerDay?.contemplationContainer?.contemplation">
-    <mat-card>
+  <mat-tab label="{{ 'bible.contemplation' | translate }}" *ngIf="this.biblePerDay?.contemplationContainer?.contemplation">
+    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.value">
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.bibleText.value">
         </div>
@@ -183,7 +173,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card>
+    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.value">
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.text.value">
         </div>

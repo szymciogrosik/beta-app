@@ -18,6 +18,15 @@
   "login.validation.mandatoryPassword": "Hasło jest obowiązkowe",
   "login.validation.invalidEmail": "Email jest niepoprawny",
   "login.approve.button": "Zaloguj",
-  "bible.cardHeader": "Fragment z na dziś",
+  "bible.daily": "Coddzienny fragment",
+  "bible.occasion": "Święto",
+  "bible.mainQuote": "Fragment przewodni",
+  "bible.psalm": "Psalm",
+  "bible.worship": "Uwielbienie",
+  "bible.apostolicLesson": "Lekcja apostolska",
+  "bible.sermonText": "Tekst kazalny",
+  "bible.oldTestament": "Stary Testament",
+  "bible.gospel": "Ewangelia",
+  "bible.contemplation": "Rozważanie",
   "status.lastBuildTime": "Data ostatniego wdrożenia"
 }
