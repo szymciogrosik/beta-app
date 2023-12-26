@@ -70,7 +70,7 @@
         <mat-tab label="{{ 'bible.occasion' | translate }} {{ this.biblePerDay.specialOccasionContainer.specialOccasionList.indexOf(specialOccasion) + 1 }}">
           <mat-card *ngIf="this.specialOccasion?.title?.value">
             <mat-card-title>
-              <h2>{{ specialOccasion?.title?.value }}</h2>
+              <h2><i>{{ specialOccasion?.title?.value }}</i></h2>
             </mat-card-title>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.mainQuoteText?.value">
