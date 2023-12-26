@@ -14,9 +14,6 @@
   <mat-tab label="Daily">
     <div class="flex-container">
       <mat-card class="flex-element flex-element-left">
-        <mat-card-title>
-          <h2>Pierwszy standardowy</h2>
-        </mat-card-title>
         <mat-card-content>
           <div *ngIf="this.biblePerDay?.firstStandardText?.isReady()" [innerHTML]="this.biblePerDay.firstStandardText.value">
           </div>
@@ -26,9 +23,6 @@
         </mat-card-content>
       </mat-card>
       <mat-card class="flex-element flex-element-right">
-        <mat-card-title>
-          <h2>Drugi standardowy</h2>
-        </mat-card-title>
         <mat-card-content>
           <div *ngIf="this.biblePerDay?.secondStandardText?.isReady()" [innerHTML]="this.biblePerDay.secondStandardText.value">
           </div>
@@ -40,9 +34,6 @@
     </div>
 
     <mat-card *ngIf="this.biblePerDay?.firstAdditionalText?.value">
-      <mat-card-title>
-        <h2>Pierwszy dodatkowy</h2>
-      </mat-card-title>
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.firstAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.firstAdditionalText.value">
         </div>
@@ -53,9 +44,6 @@
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.secondAdditionalText?.value">
-      <mat-card-title>
-        <h2>Drugi dodatkowy</h2>
-      </mat-card-title>
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.secondAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.secondAdditionalText.value">
         </div>
@@ -66,9 +54,6 @@
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.quoteNotFromBibleText?.value">
-      <mat-card-title>
-        <h2>Cytat nie z Biblii</h2>
-      </mat-card-title>
       <mat-card-content>
         <div *ngIf="this.biblePerDay?.quoteNotFromBibleText?.isReady()" [innerHTML]="this.biblePerDay.quoteNotFromBibleText.value">
         </div>
