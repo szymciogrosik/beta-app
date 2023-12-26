@@ -40,7 +40,8 @@ export class BiblePerDayQuoteProviderService {
     this.bibleService.findQuoteForWarsawBible(singleReference).subscribe({
       next: (data): void => {
         for (let i: number = 0; i < data.verses.length; i++) {
-          bibleTmpQuote.value += (this.contentStylePrefix + data.verses[i].text + this.contentStyleSuffix);
+          let bibleQuote: string = this.capitalizeFirstLetter(data.verses[i].text);
+          bibleTmpQuote.value += (this.contentStylePrefix + bibleQuote + this.contentStyleSuffix);
         }
         bibleTmpQuote.value += (this.refStylePrefix + singleReference.present() + this.redStyleSuffix);
         index++;
@@ -68,6 +69,14 @@ export class BiblePerDayQuoteProviderService {
       targetQuoteNotFromBible.setValue(content);
     } else {
       targetQuoteNotFromBible.wait = false;
+    }
+  }
+
+  private capitalizeFirstLetter(text: string) {
+    if (text.length > 0) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    } else {
+      return text;
     }
   }
 
