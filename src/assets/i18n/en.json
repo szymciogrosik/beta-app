@@ -18,6 +18,7 @@
   "login.validation.mandatoryPassword": "Password is mandatory",
   "login.validation.invalidEmail": "Invalid email",
   "login.approve.button": "Login",
+  "bible.copy": "Copy",
   "bible.daily": "Daily",
   "bible.occasion": "Occasion",
   "bible.mainQuote": "Main quote",
