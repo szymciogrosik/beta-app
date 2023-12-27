@@ -21,6 +21,9 @@
             <mat-spinner [diameter]="80"></mat-spinner>
           </div>
         </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button (click)="copyToClipboard(this.biblePerDay.firstStandardText.value)">{{ 'bible.copy' | translate }}</button>
+        </mat-card-actions>
       </mat-card>
       <mat-card class="flex-element flex-element-right">
         <mat-card-content>
@@ -30,6 +33,9 @@
             <mat-spinner [diameter]="80"></mat-spinner>
           </div>
         </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button (click)="copyToClipboard(this.biblePerDay.secondStandardText.value)">{{ 'bible.copy' | translate }}</button>
+        </mat-card-actions>
       </mat-card>
     </div>
 
@@ -41,6 +47,9 @@
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.firstAdditionalText.value)">{{ 'bible.copy' | translate }}</button>
+      </mat-card-actions>
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.secondAdditionalText?.value">
@@ -51,6 +60,9 @@
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.secondAdditionalText.value)">{{ 'bible.copy' | translate }}</button>
+      </mat-card-actions>
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.quoteNotFromBibleText?.value">
@@ -61,6 +73,9 @@
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.quoteNotFromBibleText.value)">{{ 'bible.copy' | translate }}</button>
+      </mat-card-actions>
     </mat-card>
   </mat-tab>
 
@@ -84,6 +99,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.mainQuoteText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.psalmText?.value">
             <mat-card-title>
@@ -96,6 +114,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.psalmText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.worshipSongs?.value">
             <mat-card-title>
@@ -108,6 +129,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.worshipSongs.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.apostolicLessonText?.value">
             <mat-card-title>
@@ -120,6 +144,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.apostolicLessonText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.sermonTextListText?.value">
             <mat-card-title>
@@ -132,6 +159,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.sermonTextListText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.oldTestamentText?.value">
             <mat-card-title>
@@ -144,6 +174,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.oldTestamentText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
           <mat-card *ngIf="this.specialOccasion?.gospelText?.value">
             <mat-card-title>
@@ -156,6 +189,9 @@
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button (click)="copyToClipboard(specialOccasion.gospelText.value)">{{ 'bible.copy' | translate }}</button>
+            </mat-card-actions>
           </mat-card>
         </mat-tab>
       </div>
@@ -171,6 +207,9 @@
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.bibleText.value)">{{ 'bible.copy' | translate }}</button>
+      </mat-card-actions>
     </mat-card>
 
     <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.value">
@@ -181,6 +220,9 @@
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.text.value)">{{ 'bible.copy' | translate }}</button>
+      </mat-card-actions>
     </mat-card>
   </mat-tab>
 

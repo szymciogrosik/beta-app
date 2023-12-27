@@ -52,4 +52,8 @@ export class BibleComponent {
     this.biblePerDayService.fillPageModel(year, month, day, this.biblePerDay);
   }
 
+  copyToClipboard(text: string): void {
+    navigator.clipboard.writeText(text);
+  }
+
 }
