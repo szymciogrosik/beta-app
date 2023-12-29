@@ -76,7 +76,7 @@ export class BiblePerDayQuoteProviderService {
     targetQuoteNotFromBibleContainer.setQuoteList([quoteObj]);
   }
 
-  private capitalizeFirstLetter(text: string) {
+  private capitalizeFirstLetter(text: string): string {
     if (text.length > 0) {
       return text.charAt(0).toUpperCase() + text.slice(1);
     } else {
