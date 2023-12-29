@@ -44,7 +44,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* mat-card general styles */
 mat-card-title {
   text-align: center;
-  padding: 10px 0 20px 0;
+  padding-top: 10px;
+}
+mat-card-content {
+  padding-top: 20px !important;
 }
 mat-card {
   padding: 10px;
