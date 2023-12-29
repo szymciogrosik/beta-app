@@ -52,6 +52,22 @@ export class BibleComponent {
     this.biblePerDayService.fillPageModel(year, month, day, this.biblePerDay);
   }
 
+  moveToPreviousDay(): void {
+    let newDate: DateTime | undefined = this.selectedDate.value?.minus({ "days": 1 });
+    if (newDate === undefined) {
+      throw Error("New date cannot be undefined!");
+    }
+    this.selectedDate.setValue(newDate);
+  }
+
+  moveToNextDay(): void {
+    let newDate: DateTime | undefined = this.selectedDate.value?.plus({ "days": 1 });
+    if (newDate === undefined) {
+      throw Error("New date cannot be undefined!");
+    }
+    this.selectedDate.setValue(newDate);
+  }
+
   copyToClipboard(text: string): void {
     navigator.clipboard.writeText(text);
   }
