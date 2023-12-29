@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {DateService} from "../util/date.service";
 import {AssetsService} from "../util/assets.service";
 import {BiblePerDayContainerInput} from "../../_models/bibleperday/input/bible-per-day-container-input";
 import {BiblePerDay} from "../../_models/bibleperday/output/bible-per-day";
@@ -19,7 +18,6 @@ import {SpecialOccasion} from "../../_models/bibleperday/output/special-occasion
 export class BiblePerDayService {
 
   constructor(
-    private dateService: DateService,
     private assetsService: AssetsService,
     private quoteProvider: BiblePerDayQuoteProviderService
   ) {

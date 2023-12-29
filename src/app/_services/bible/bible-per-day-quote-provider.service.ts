@@ -42,10 +42,10 @@ export class BiblePerDayQuoteProviderService {
         let reference: string = singleReference.present();
         let bibleQuote: string = '';
         for (let i: number = 0; i < data.verses.length; i++) {
-          bibleQuote = this.capitalizeFirstLetter(data.verses[i].text);
+          bibleQuote += data.verses[i].text + "\n";
         }
         let quote: Quote = new Quote();
-        quote.setValueAndReference(bibleQuote, reference);
+        quote.setValueAndReference(this.capitalizeFirstLetter(bibleQuote), reference);
         bibleTmpQuoteList.push(quote);
 
         index++;
