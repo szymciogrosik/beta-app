@@ -41,7 +41,7 @@ export class BiblePerDayService {
     this.quoteProvider.fillQuoteFromBible(bpdForToday.secondStandard, targetModel.secondStandardText);
     this.quoteProvider.fillQuoteFromBible(bpdForToday.firstAdditional, targetModel.firstAdditionalText);
     this.quoteProvider.fillQuoteFromBible(bpdForToday.secondAdditional, targetModel.secondAdditionalText);
-    this.quoteProvider.fillQuoteNotFromBible(bpdForToday.quoteNotFromBible, bpdForToday.quoteNotFromBibleReference, targetModel.quoteNotFromBibleText);
+    this.quoteProvider.fillQuoteNotFromBibleWithReference(bpdForToday.quoteNotFromBible, bpdForToday.quoteNotFromBibleReference, targetModel.quoteNotFromBibleText);
     this.fillSpecialOccasionList(bpdForToday.specialOccasionList, targetModel.specialOccasionContainer);
     this.fillContemplation(bpdForToday.contemplationDTO, targetModel.contemplationContainer);
   }
@@ -60,7 +60,7 @@ export class BiblePerDayService {
       occasionTmp.title.setValue(specialOccasion.title.toString());
       this.quoteProvider.fillQuoteFromBible(specialOccasion.mainQuote, occasionTmp.mainQuoteText);
       this.quoteProvider.fillQuoteFromBible(specialOccasion.psalm, occasionTmp.psalmText);
-      this.quoteProvider.fillQuoteNotFromBible(specialOccasion.worshipSongs.join("<br/>"), "", occasionTmp.worshipSongs);
+      this.quoteProvider.fillQuoteNotFromBible(specialOccasion.worshipSongs, occasionTmp.worshipSongs);
       this.quoteProvider.fillQuoteFromBible(specialOccasion.apostolicLesson, occasionTmp.apostolicLessonText);
       this.quoteProvider.fillQuoteFromBible(specialOccasion.sermonTextList.join(" | "), occasionTmp.sermonTextListText);
       this.quoteProvider.fillQuoteFromBible(specialOccasion.oldTestament, occasionTmp.oldTestamentText);
@@ -77,7 +77,7 @@ export class BiblePerDayService {
     }
     let contemplation: Contemplation = new Contemplation();
     this.quoteProvider.fillQuoteFromBible(contemplationDTO.bibleReference, contemplation.bibleText);
-    this.quoteProvider.fillQuoteNotFromBible(contemplationDTO.text, contemplationDTO.textReference, contemplation.text);
+    this.quoteProvider.fillQuoteNotFromBibleWithReference(contemplationDTO.text, contemplationDTO.textReference, contemplation.text);
     contemplationContainer.contemplation = contemplation;
   }
 

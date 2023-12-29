@@ -1,8 +1,8 @@
-import {Quote} from "../quote";
+import {QuoteContainer} from "../quote-container";
 
 export class Contemplation {
-  bibleText: Quote = new Quote();
-  text: Quote = new Quote();
+  bibleText: QuoteContainer = new QuoteContainer();
+  text: QuoteContainer = new QuoteContainer();
 
   public isReady(): boolean {
     return this.bibleText.isReady() && this.text.isReady();

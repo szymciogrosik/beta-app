@@ -2,6 +2,19 @@ mat-card {
   margin: 30px 0;
 }
 
+.bible-date-row {
+  padding-bottom: 0 !important;
+}
+.bible-change-date-icon-container {
+  text-align: center;
+}
+.bible-change-one-day-icon {
+  padding-top: 0 !important;
+}
+.bible-change-date-icon {
+  display: none;
+}
+
 @media (min-width: 701px) {
   .flex-container {
     display: flex;
@@ -16,5 +29,22 @@ mat-card {
   }
   .flex-element-right {
     margin-left: 10px;
+  }
+  .flex-element-center {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .bible-change-date-icon-container {
+    padding-top: 18px !important;
+  }
+  .bible-change-one-day-icon {
+    padding-top: 18px !important;
+  }
+  .bible-change-date-icon {
+    display: inline-block;
+    transform: scale(2);
+  }
+  .bible-change-date-text {
+    display: none;
   }
 }

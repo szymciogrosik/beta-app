@@ -3,35 +3,35 @@ import {BibleReference} from "./bible-reference";
 import {Quote} from "../../_models/bibleperday/quote";
 import {BibleService} from "./bible.service";
 import {BiblePerDayParserService} from "./bible-per-day-parser.service";
+import {QuoteContainer} from "../../_models/bibleperday/quote-container";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BiblePerDayQuoteProviderService {
-  private contentStylePrefix: string = "<div style='text-align: left;'>";
-  private contentStyleSuffix: string = "</div>";
-  private refStylePrefix: string = "<div style='text-align: center;'><br/><i style='text-align: center;'>";
-  private redStyleSuffix: string = "</i></div>";
-
   constructor(
     private bibleService: BibleService,
     private parser: BiblePerDayParserService
   ) {
   }
 
-  public fillQuoteNotFromBible(quote: string, quoteRef: string, targetQuote: Quote): void {
-    this.createQuoteNotFromBible(quote, quoteRef, targetQuote);
+  public fillQuoteNotFromBible(quotes: string[], targetQuoteContainer: QuoteContainer): void {
+    this.createQuoteNotFromBible(quotes, targetQuoteContainer);
   }
 
-  public fillQuoteFromBible(inputReference: string, bibleTargetQuote: Quote): void {
+  public fillQuoteNotFromBibleWithReference(quote: string, quoteRef: string, targetQuoteContainer: QuoteContainer): void {
+    this.createQuoteNotFromBibleWithReference(quote, quoteRef, targetQuoteContainer);
+  }
+
+  public fillQuoteFromBible(inputReference: string, bibleTargetQuoteContainer: QuoteContainer): void {
     if (!inputReference) {
-      bibleTargetQuote.wait = false;
+      bibleTargetQuoteContainer.wait = false;
       return;
     }
-    this.fillQuoteRepeatableFromBible(this.parser.getBibleReferences(inputReference), 0, bibleTargetQuote, new Quote())
+    this.fillQuoteRepeatableFromBible(this.parser.getBibleReferences(inputReference), 0, bibleTargetQuoteContainer, [])
   }
 
-  private fillQuoteRepeatableFromBible(bibleReferences: BibleReference[], index: number, bibleTargetQuote: Quote, bibleTmpQuote: Quote): void {
+  private fillQuoteRepeatableFromBible(bibleReferences: BibleReference[], index: number, bibleTargetQuoteContainer: QuoteContainer, bibleTmpQuoteList: Quote[]): void {
     if (bibleReferences.length == 0 || !bibleReferences[index]) {
       return;
     }
@@ -39,37 +39,41 @@ export class BiblePerDayQuoteProviderService {
 
     this.bibleService.findQuoteForWarsawBible(singleReference).subscribe({
       next: (data): void => {
+        let reference: string = singleReference.present();
+        let bibleQuote: string = '';
         for (let i: number = 0; i < data.verses.length; i++) {
-          let bibleQuote: string = this.capitalizeFirstLetter(data.verses[i].text);
-          bibleTmpQuote.value += (this.contentStylePrefix + bibleQuote + this.contentStyleSuffix);
+          bibleQuote = this.capitalizeFirstLetter(data.verses[i].text);
         }
-        bibleTmpQuote.value += (this.refStylePrefix + singleReference.present() + this.redStyleSuffix);
+        let quote: Quote = new Quote();
+        quote.setValueAndReference(bibleQuote, reference);
+        bibleTmpQuoteList.push(quote);
+
         index++;
         if (index < bibleReferences.length) {
-          bibleTmpQuote.value += "<br/>";
-          this.fillQuoteRepeatableFromBible(bibleReferences, index, bibleTargetQuote, bibleTmpQuote);
+          this.fillQuoteRepeatableFromBible(bibleReferences, index, bibleTargetQuoteContainer, bibleTmpQuoteList);
         } else {
-          bibleTargetQuote.value += bibleTmpQuote.value;
+          bibleTargetQuoteContainer.setQuoteList(bibleTmpQuoteList);
         }
       },
       error: (error) => console.error(error)
     });
   }
 
-  private createQuoteNotFromBible(quote: string, quoteRef: string, targetQuoteNotFromBible: Quote): void {
-    let content: string = "";
-    if (quote) {
-      content += this.contentStylePrefix + quote + this.contentStyleSuffix;
+  private createQuoteNotFromBible(quotes: string[], targetQuoteNotFromBibleContainer: QuoteContainer): void {
+    let result: Quote[] = [];
+    for (let i: number = 0; i < quotes.length; i++) {
+      let quote: string = quotes[i];
+      let quoteObj: Quote = new Quote();
+      quoteObj.setValue(quote);
+      result.push(quoteObj);
     }
-    if (quoteRef) {
-      content += this.refStylePrefix + quoteRef + this.redStyleSuffix;
-    }
+    targetQuoteNotFromBibleContainer.setQuoteList(result);
+  }
 
-    if (content !== "") {
-      targetQuoteNotFromBible.setValue(content);
-    } else {
-      targetQuoteNotFromBible.wait = false;
-    }
+  private createQuoteNotFromBibleWithReference(quote: string, quoteRef: string, targetQuoteNotFromBibleContainer: QuoteContainer): void {
+    let quoteObj: Quote = new Quote();
+    quoteObj.setValueAndReference(quote, quoteRef)
+    targetQuoteNotFromBibleContainer.setQuoteList([quoteObj]);
   }
 
   private capitalizeFirstLetter(text: string) {

@@ -1,80 +1,102 @@
-<mat-card>
-  <mat-card-content>
-    <mat-form-field appearance="outline">
-      <mat-label>{{ 'datePicker.chooseDate' | translate }}</mat-label>
-      <input matInput [min]="this.minDate" [max]="this.maxDate" [matDatepicker]="datePicker" [formControl]="selectedDate"
-             placeholder="{{ 'datePicker.formatHint' | translate }}" readonly required>
-      <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
-      <mat-datepicker #datePicker disabled="false"></mat-datepicker>
-    </mat-form-field>
-  </mat-card-content>
-</mat-card>
+<div class="flex-container">
+  <mat-card class="flex-element flex-element-left" (click)="moveToPreviousDay()">
+    <mat-card-content class="bible-date-row bible-change-one-day-icon">
+      <div class="bible-change-date-icon-container">
+        <mat-icon class="bible-change-date-icon">chevron_left</mat-icon>
+        <div class="bible-change-date-text">
+          {{ 'bible.previousDay' | translate }}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="flex-element flex-element-center">
+    <mat-card-content class="bible-date-row">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'datePicker.chooseDate' | translate }}</mat-label>
+        <input matInput [min]="this.minDate" [max]="this.maxDate" [matDatepicker]="datePicker" [formControl]="selectedDate"
+               placeholder="{{ 'datePicker.formatHint' | translate }}" readonly required>
+        <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="flex-element flex-element-right" (click)="moveToNextDay()">
+    <mat-card-content class="bible-date-row bible-change-one-day-icon">
+      <div class="bible-change-date-icon-container">
+        <mat-icon class="bible-change-date-icon">chevron_right</mat-icon>
+        <div class="bible-change-date-text">
+          {{ 'bible.nextDay' | translate }}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 <mat-tab-group>
   <mat-tab label="{{ 'bible.daily' | translate }}">
     <div class="flex-container">
       <mat-card class="flex-element flex-element-left">
         <mat-card-content>
-          <div *ngIf="this.biblePerDay?.firstStandardText?.isReady()" [innerHTML]="this.biblePerDay.firstStandardText.value">
+          <div *ngIf="this.biblePerDay?.firstStandardText?.isReady()" [innerHTML]="this.biblePerDay.firstStandardText.present()">
           </div>
           <div *ngIf="!this.biblePerDay?.firstStandardText?.isReady()">
             <mat-spinner [diameter]="80"></mat-spinner>
           </div>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-button (click)="copyToClipboard(this.biblePerDay.firstStandardText.value)">{{ 'bible.copy' | translate }}</button>
+          <button mat-button (click)="copyToClipboard(this.biblePerDay.firstStandardText.toString())">{{ 'bible.copy' | translate }}</button>
         </mat-card-actions>
       </mat-card>
       <mat-card class="flex-element flex-element-right">
         <mat-card-content>
-          <div *ngIf="this.biblePerDay?.secondStandardText?.isReady()" [innerHTML]="this.biblePerDay.secondStandardText.value">
+          <div *ngIf="this.biblePerDay?.secondStandardText?.isReady()" [innerHTML]="this.biblePerDay.secondStandardText.present()">
           </div>
           <div *ngIf="!this.biblePerDay?.secondStandardText?.isReady()">
             <mat-spinner [diameter]="80"></mat-spinner>
           </div>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-button (click)="copyToClipboard(this.biblePerDay.secondStandardText.value)">{{ 'bible.copy' | translate }}</button>
+          <button mat-button (click)="copyToClipboard(this.biblePerDay.secondStandardText.toString())">{{ 'bible.copy' | translate }}</button>
         </mat-card-actions>
       </mat-card>
     </div>
 
-    <mat-card *ngIf="this.biblePerDay?.firstAdditionalText?.value">
+    <mat-card *ngIf="this.biblePerDay?.firstAdditionalText?.present()">
       <mat-card-content>
-        <div *ngIf="this.biblePerDay?.firstAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.firstAdditionalText.value">
+        <div *ngIf="this.biblePerDay?.firstAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.firstAdditionalText.present()">
         </div>
         <div *ngIf="!this.biblePerDay?.firstAdditionalText?.isReady()">
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-button (click)="copyToClipboard(this.biblePerDay.firstAdditionalText.value)">{{ 'bible.copy' | translate }}</button>
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.firstAdditionalText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
 
-    <mat-card *ngIf="this.biblePerDay?.secondAdditionalText?.value">
+    <mat-card *ngIf="this.biblePerDay?.secondAdditionalText?.present()">
       <mat-card-content>
-        <div *ngIf="this.biblePerDay?.secondAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.secondAdditionalText.value">
+        <div *ngIf="this.biblePerDay?.secondAdditionalText?.isReady()" [innerHTML]="this.biblePerDay.secondAdditionalText.present()">
         </div>
         <div *ngIf="!this.biblePerDay?.secondAdditionalText?.isReady()">
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-button (click)="copyToClipboard(this.biblePerDay.secondAdditionalText.value)">{{ 'bible.copy' | translate }}</button>
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.secondAdditionalText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
 
-    <mat-card *ngIf="this.biblePerDay?.quoteNotFromBibleText?.value">
+    <mat-card *ngIf="this.biblePerDay?.quoteNotFromBibleText?.present()">
       <mat-card-content>
-        <div *ngIf="this.biblePerDay?.quoteNotFromBibleText?.isReady()" [innerHTML]="this.biblePerDay.quoteNotFromBibleText.value">
+        <div *ngIf="this.biblePerDay?.quoteNotFromBibleText?.isReady()" [innerHTML]="this.biblePerDay.quoteNotFromBibleText.present()">
         </div>
         <div *ngIf="!this.biblePerDay?.quoteNotFromBibleText?.isReady()">
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-button (click)="copyToClipboard(this.biblePerDay.quoteNotFromBibleText.value)">{{ 'bible.copy' | translate }}</button>
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.quoteNotFromBibleText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
   </mat-tab>
@@ -88,109 +110,109 @@
               <h2><i>{{ specialOccasion?.title?.value }}</i></h2>
             </mat-card-title>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.mainQuoteText?.value">
+          <mat-card *ngIf="this.specialOccasion?.mainQuoteText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.mainQuote' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.mainQuoteText?.isReady()" [innerHTML]="specialOccasion.mainQuoteText.value">
+              <div *ngIf="specialOccasion.mainQuoteText?.isReady()" [innerHTML]="specialOccasion.mainQuoteText.present()">
               </div>
               <div *ngIf="!specialOccasion.mainQuoteText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.mainQuoteText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.mainQuoteText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.psalmText?.value">
+          <mat-card *ngIf="this.specialOccasion?.psalmText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.psalm' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.psalmText?.isReady()" [innerHTML]="specialOccasion.psalmText.value">
+              <div *ngIf="specialOccasion.psalmText?.isReady()" [innerHTML]="specialOccasion.psalmText.present()">
               </div>
               <div *ngIf="!specialOccasion.psalmText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.psalmText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.psalmText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.worshipSongs?.value">
+          <mat-card *ngIf="this.specialOccasion?.worshipSongs?.present()">
             <mat-card-title>
               <h2>{{ 'bible.worship' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.worshipSongs?.isReady()" [innerHTML]="specialOccasion.worshipSongs.value">
+              <div *ngIf="specialOccasion.worshipSongs?.isReady()" [innerHTML]="specialOccasion.worshipSongs.present()">
               </div>
               <div *ngIf="!specialOccasion.worshipSongs?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.worshipSongs.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.worshipSongs.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.apostolicLessonText?.value">
+          <mat-card *ngIf="this.specialOccasion?.apostolicLessonText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.apostolicLesson' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.apostolicLessonText?.isReady()" [innerHTML]="specialOccasion.apostolicLessonText.value">
+              <div *ngIf="specialOccasion.apostolicLessonText?.isReady()" [innerHTML]="specialOccasion.apostolicLessonText.present()">
               </div>
               <div *ngIf="!specialOccasion.apostolicLessonText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.apostolicLessonText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.apostolicLessonText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.sermonTextListText?.value">
+          <mat-card *ngIf="this.specialOccasion?.sermonTextListText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.sermonText' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.sermonTextListText?.isReady()" [innerHTML]="specialOccasion.sermonTextListText.value">
+              <div *ngIf="specialOccasion.sermonTextListText?.isReady()" [innerHTML]="specialOccasion.sermonTextListText.present()">
               </div>
               <div *ngIf="!specialOccasion.sermonTextListText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.sermonTextListText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.sermonTextListText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.oldTestamentText?.value">
+          <mat-card *ngIf="this.specialOccasion?.oldTestamentText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.oldTestament' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.oldTestamentText?.isReady()" [innerHTML]="specialOccasion.oldTestamentText.value">
+              <div *ngIf="specialOccasion.oldTestamentText?.isReady()" [innerHTML]="specialOccasion.oldTestamentText.present()">
               </div>
               <div *ngIf="!specialOccasion.oldTestamentText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.oldTestamentText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.oldTestamentText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
-          <mat-card *ngIf="this.specialOccasion?.gospelText?.value">
+          <mat-card *ngIf="this.specialOccasion?.gospelText?.present()">
             <mat-card-title>
               <h2>{{ 'bible.gospel' | translate }}</h2>
             </mat-card-title>
             <mat-card-content>
-              <div *ngIf="specialOccasion.gospelText?.isReady()" [innerHTML]="specialOccasion.gospelText.value">
+              <div *ngIf="specialOccasion.gospelText?.isReady()" [innerHTML]="specialOccasion.gospelText.present()">
               </div>
               <div *ngIf="!specialOccasion.gospelText?.isReady()">
                 <mat-spinner [diameter]="80"></mat-spinner>
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-button (click)="copyToClipboard(specialOccasion.gospelText.value)">{{ 'bible.copy' | translate }}</button>
+              <button mat-button (click)="copyToClipboard(specialOccasion.gospelText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
         </mat-tab>
@@ -199,29 +221,29 @@
   </mat-tab>
 
   <mat-tab label="{{ 'bible.contemplation' | translate }}" *ngIf="this.biblePerDay?.contemplationContainer?.contemplation">
-    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.value">
+    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.present()">
       <mat-card-content>
-        <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.bibleText.value">
+        <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.bibleText.present()">
         </div>
         <div *ngIf="!this.biblePerDay?.contemplationContainer?.contemplation?.bibleText?.isReady()">
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.bibleText.value)">{{ 'bible.copy' | translate }}</button>
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.bibleText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
 
-    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.value">
+    <mat-card *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.present()">
       <mat-card-content>
-        <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.text.value">
+        <div *ngIf="this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()" [innerHTML]="this.biblePerDay.contemplationContainer.contemplation.text.present()">
         </div>
         <div *ngIf="!this.biblePerDay?.contemplationContainer?.contemplation?.text?.isReady()">
           <mat-spinner [diameter]="80"></mat-spinner>
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.text.value)">{{ 'bible.copy' | translate }}</button>
+        <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.text.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
   </mat-tab>

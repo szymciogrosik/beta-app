@@ -1,15 +1,16 @@
 import {Quote} from "../quote";
+import {QuoteContainer} from "../quote-container";
 
 export class SpecialOccasion {
   occasion: Quote = new Quote();
   title: Quote = new Quote();
-  mainQuoteText: Quote = new Quote();
-  psalmText: Quote = new Quote();
-  worshipSongs: Quote = new Quote();
-  apostolicLessonText: Quote = new Quote();
-  sermonTextListText: Quote = new Quote();
-  oldTestamentText: Quote = new Quote();
-  gospelText: Quote = new Quote();
+  mainQuoteText: QuoteContainer = new QuoteContainer();
+  psalmText: QuoteContainer = new QuoteContainer();
+  worshipSongs: QuoteContainer = new QuoteContainer();
+  apostolicLessonText: QuoteContainer = new QuoteContainer();
+  sermonTextListText: QuoteContainer = new QuoteContainer();
+  oldTestamentText: QuoteContainer = new QuoteContainer();
+  gospelText: QuoteContainer = new QuoteContainer();
 
   public isReady(): boolean {
     return this.occasion.isReady()
