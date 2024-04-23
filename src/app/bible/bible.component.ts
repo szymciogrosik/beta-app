@@ -70,6 +70,14 @@ export class BibleComponent {
 
   copyToClipboard(text: string): void {
     navigator.clipboard.writeText(text);
+    this.speak(text);
+  }
+
+  speak(text: string): void {
+    const msg : SpeechSynthesisUtterance = new SpeechSynthesisUtterance();
+    msg.text = text;
+    msg.lang = 'pl-PL'; // Set language to Polish
+    window.speechSynthesis.speak(msg);
   }
 
 }

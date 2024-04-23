@@ -66,4 +66,13 @@ export class Quote {
     return result;
   }
 
+  public toStringWithoutReference(): string {
+    let result: string = '';
+    result += this.value;
+    if (!this.reference) {
+      return result;
+    }
+    return result;
+  }
+
 }

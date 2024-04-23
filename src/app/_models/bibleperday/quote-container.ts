@@ -44,4 +44,16 @@ export class QuoteContainer {
     return result;
   }
 
+  public toStringWithoutReference(): string {
+    let result: string = '';
+    for (let i: number = 0; i < this.quoteList.length; i++) {
+      let quote: Quote = this.quoteList[i];
+      result += quote.toStringWithoutReference();
+      if (i !== this.quoteList.length - 1) {
+        result += "\n";
+      }
+    }
+    return result;
+  }
+
 }
