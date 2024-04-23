@@ -44,6 +44,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end">
+          <button mat-button (click)="speak(this.biblePerDay.firstStandardText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
           <button mat-button (click)="copyToClipboard(this.biblePerDay.firstStandardText.toString())">{{ 'bible.copy' | translate }}</button>
         </mat-card-actions>
       </mat-card>
@@ -56,6 +57,7 @@
           </div>
         </mat-card-content>
         <mat-card-actions align="end">
+          <button mat-button (click)="speak(this.biblePerDay.secondStandardText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
           <button mat-button (click)="copyToClipboard(this.biblePerDay.secondStandardText.toString())">{{ 'bible.copy' | translate }}</button>
         </mat-card-actions>
       </mat-card>
@@ -70,6 +72,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button (click)="speak(this.biblePerDay.firstAdditionalText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
         <button mat-button (click)="copyToClipboard(this.biblePerDay.firstAdditionalText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
@@ -83,6 +86,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button (click)="speak(this.biblePerDay.secondAdditionalText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
         <button mat-button (click)="copyToClipboard(this.biblePerDay.secondAdditionalText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
@@ -96,6 +100,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button (click)="speak(this.biblePerDay.quoteNotFromBibleText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
         <button mat-button (click)="copyToClipboard(this.biblePerDay.quoteNotFromBibleText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
@@ -122,6 +127,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.mainQuoteText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.mainQuoteText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -137,6 +143,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.psalmText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.psalmText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -152,6 +159,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.worshipSongs.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.worshipSongs.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -167,6 +175,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.apostolicLessonText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.apostolicLessonText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -182,6 +191,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.sermonTextListText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.sermonTextListText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -197,6 +207,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.oldTestamentText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.oldTestamentText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -212,6 +223,7 @@
               </div>
             </mat-card-content>
             <mat-card-actions align="end">
+              <button mat-button (click)="speak(specialOccasion.gospelText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
               <button mat-button (click)="copyToClipboard(specialOccasion.gospelText.toString())">{{ 'bible.copy' | translate }}</button>
             </mat-card-actions>
           </mat-card>
@@ -230,6 +242,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button (click)="speak(this.biblePerDay.contemplationContainer.contemplation.bibleText.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
         <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.bibleText.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
@@ -243,6 +256,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button (click)="speak(this.biblePerDay.contemplationContainer.contemplation.text.toStringWithoutReference())">{{ 'bible.speak' | translate }}</button>
         <button mat-button (click)="copyToClipboard(this.biblePerDay.contemplationContainer.contemplation.text.toString())">{{ 'bible.copy' | translate }}</button>
       </mat-card-actions>
     </mat-card>
